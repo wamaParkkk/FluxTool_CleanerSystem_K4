@@ -490,8 +490,8 @@ namespace FluxTool_CleanerSystem_K4
             // Interlock이 해제 상태인지 체크
             if (!Define.bInterlockRelease)
             {
-                if ((GetDigValue((int)DigInputList.EMO_Front_i) == "Off") ||
-                    (GetDigValue((int)DigInputList.EMO_Rear_i) == "Off"))
+                if (GetDigValue((int)DigInputList.EMO_Front_i) == "Off") //||
+                    //(GetDigValue((int)DigInputList.EMO_Rear_i) == "Off"))
                 {
                     ALL_VALVE_CLOSE();
                     PROCESS_ABORT();
@@ -697,7 +697,7 @@ namespace FluxTool_CleanerSystem_K4
                     (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_IDLE))
                 {
                     if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                        (GetDigValue((int)DigInputList.EMO_Rear_i) == "On") &&
+                        //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On") &&
 
                         (GetDigValue((int)DigInputList.Water_Level_Low_i) == "Off"))
                     {
@@ -760,8 +760,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }                            
@@ -782,8 +782,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -796,8 +796,8 @@ namespace FluxTool_CleanerSystem_K4
                     }
                     else
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -819,8 +819,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -841,8 +841,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -855,8 +855,8 @@ namespace FluxTool_CleanerSystem_K4
                     }
                     else
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -878,8 +878,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -900,8 +900,8 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
@@ -914,8 +914,8 @@ namespace FluxTool_CleanerSystem_K4
                     }
                     else
                     {
-                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                            (GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
+                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
                         {
                             return true;
                         }
