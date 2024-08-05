@@ -114,6 +114,13 @@ namespace FluxTool_CleanerSystem_K4.Squence
             //HostConnection.Host_Set_AlarmName(Global.hostEquipmentInfo, ModuleName, Define.sAlarmName);
         }
 
+        public void F_HOLD_STEP()
+        {
+            step.Flag = false;
+            step.Times = 1;
+            Define.seqCylinderCtrl[module] = Define.CTRL_HOLD;
+        }
+
         public void F_INC_STEP()
         {
             step.Flag = true;
@@ -137,6 +144,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 step.Times = 1;
 
                 Global.EventLog("START THE CYLINDER MOVING.", ModuleName, "Event");
+            }
+            else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_RUN) && (Define.seqCylinderCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCylinderCtrl[module] = Define.CTRL_RUNNING;
             }
             else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_RUN) && (Define.seqCylinderCtrl[module] == Define.CTRL_RUNNING))
             {
@@ -178,6 +189,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
                 Global.EventLog("START THE CYLINDER HOME.", ModuleName, "Event");
             }
+            else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_HOME) && (Define.seqCylinderCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCylinderCtrl[module] = Define.CTRL_RUNNING;
+            }
             else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_HOME) && (Define.seqCylinderCtrl[module] == Define.CTRL_RUNNING))
             {
                 switch (step.Layer)
@@ -212,6 +227,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
                 Global.EventLog("START THE CYLINDER FORWARD.", ModuleName, "Event");
             }
+            else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_FWD) && (Define.seqCylinderCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCylinderCtrl[module] = Define.CTRL_RUNNING;
+            }
             else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_FWD) && (Define.seqCylinderCtrl[module] == Define.CTRL_RUNNING))
             {
                 switch (step.Layer)
@@ -245,6 +264,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 step.Times = 1;
 
                 Global.EventLog("START THE CYLINDER BACKWARD.", ModuleName, "Event");
+            }
+            else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_BWD) && (Define.seqCylinderCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCylinderCtrl[module] = Define.CTRL_RUNNING;
             }
             else if ((Define.seqCylinderMode[module] == Define.MODE_CYLINDER_BWD) && (Define.seqCylinderCtrl[module] == Define.CTRL_RUNNING))
             {
@@ -286,8 +309,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                         Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.On, ModuleName);
                         Global.SetDigValue((int)DigOutputList.CH1_Cylinder_FwdBwd_o, (uint)DigitalOffOn.Off, ModuleName);
 
-                        step.Flag = false;
-                        step.Times = 1;
+                        F_HOLD_STEP();
                     }                    
                 }
                 else if (FwdBwd == "Backward")
@@ -302,8 +324,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                         await Task.Delay(500);
                         Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.On, ModuleName);
 
-                        step.Flag = false;
-                        step.Times = 1;
+                        F_HOLD_STEP();
                     }                    
                 }                
             }
@@ -359,9 +380,8 @@ namespace FluxTool_CleanerSystem_K4.Squence
         private void P_CYLINDER_StepCheck(byte nStep)
         {
             if (step.Flag)
-            {                
-                step.Flag = false;
-                step.Times = 1;
+            {
+                F_HOLD_STEP();
             }
             else
             {
@@ -388,8 +408,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     await Task.Delay(500);
                     Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.On, ModuleName);
 
-                    step.Flag = false;
-                    step.Times = 1;
+                    F_HOLD_STEP();
                 }                    
             }
             else

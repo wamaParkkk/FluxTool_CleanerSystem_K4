@@ -160,6 +160,13 @@ namespace FluxTool_CleanerSystem_K4.Squence
             //HostConnection.Host_Set_AlarmName(Global.hostEquipmentInfo, ModuleName, Define.sAlarmName);
         }
 
+        public void F_HOLD_STEP()
+        {
+            step.Flag = false;
+            step.Times = 1;
+            Define.seqCtrl[module] = Define.CTRL_HOLD;
+        }
+
         public void F_INC_STEP()
         {
             step.Flag = true;
@@ -211,6 +218,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
                 //HostConnection.Host_Set_ProcessEndTime(Global.hostEquipmentInfo, ModuleName, "");
                 //HostConnection.Host_Set_RunStatus(Global.hostEquipmentInfo, ModuleName, "Process");
+            }
+            else if ((Define.seqMode[module] == Define.MODE_PROCESS) && (Define.seqCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCtrl[module] = Define.CTRL_RUNNING;
             }
             else if ((Define.seqMode[module] == Define.MODE_PROCESS) && (Define.seqCtrl[module] == Define.CTRL_RUNNING))
             {
@@ -317,6 +328,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
                 //HostConnection.Host_Set_RunStatus(Global.hostEquipmentInfo, ModuleName, "Init");
             }
+            else if ((Define.seqMode[module] == Define.MODE_INIT) && (Define.seqCtrl[module] == Define.CTRL_HOLD))
+            {
+                Define.seqCtrl[module] = Define.CTRL_RUNNING;
+            }
             else if ((Define.seqMode[module] == Define.MODE_INIT) && (Define.seqCtrl[module] == Define.CTRL_RUNNING))
             {
                 switch (step.Layer)
@@ -370,8 +385,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
             {
                 Global.EventLog("Loading the process recipe file.", ModuleName, "Event");
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
             }
             else
             {
@@ -545,8 +559,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     Global.SetDigValue((int)DigOutputList.CH1_Pin_UpDn_o, (uint)DigitalOffOn.Off, ModuleName);
                 }
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
             }
             else
             {                
@@ -577,10 +590,9 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     Define.seqCylinderMode[module] = Define.MODE_CYLINDER_HOME;
                     Define.seqCylinderCtrl[module] = Define.CTRL_RUN;
                     Define.seqCylinderSts[module] = Define.STS_CYLINDER_IDLE;                    
-                }                
+                }
 
-                step.Flag = false;
-                step.Times = 1;                
+                F_HOLD_STEP();
             }
             else
             {
@@ -616,8 +628,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
             {
                 Global.EventLog("Check the process time : " + prcsRecipe.ProcessTime[prcsRecipe.StepNum - 1].ToString() + " sec.", ModuleName, "Event");
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
                 //step.Times = fAlarmTime;
             }
             else
@@ -676,8 +687,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
             {
                 Global.EventLog("Check the End step.", ModuleName, "Event");
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
             }
             else
             {
@@ -785,8 +795,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
             {
                 F_PROCESS_ALL_VALVE_CLOSE();
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
             }
             else
             {
@@ -815,8 +824,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     }
                 }
 
-                step.Flag = false;
-                step.Times = 1;
+                F_HOLD_STEP();
             }
             else
             {
