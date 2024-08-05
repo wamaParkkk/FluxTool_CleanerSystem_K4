@@ -1674,12 +1674,12 @@ namespace FluxTool_CleanerSystem_K4
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Navy;
+            this.label21.ForeColor = System.Drawing.Color.Silver;
             this.label21.Location = new System.Drawing.Point(48, 323);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(128, 21);
+            this.label21.Size = new System.Drawing.Size(97, 21);
             this.label21.TabIndex = 146;
-            this.label21.Text = "[X09] EMO Rear";
+            this.label21.Text = "[X09] Spare";
             // 
             // label20
             // 
