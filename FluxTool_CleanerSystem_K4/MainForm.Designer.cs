@@ -73,6 +73,7 @@ namespace FluxTool_CleanerSystem_K4
             this.checkBoxInterlockRelease = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.simulationTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -122,6 +123,7 @@ namespace FluxTool_CleanerSystem_K4
             this.panel5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.labelInterlockEnaDis);
             this.panel5.Controls.Add(this.pictureBoxEventLog);
             this.panel5.Controls.Add(this.btnEventLog);
@@ -281,7 +283,7 @@ namespace FluxTool_CleanerSystem_K4
             this.labelPageName.BackColor = System.Drawing.Color.Transparent;
             this.labelPageName.Font = new System.Drawing.Font("Nirmala UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPageName.ForeColor = System.Drawing.Color.White;
-            this.labelPageName.Location = new System.Drawing.Point(50, 16);
+            this.labelPageName.Location = new System.Drawing.Point(20, 16);
             this.labelPageName.Name = "labelPageName";
             this.labelPageName.Size = new System.Drawing.Size(55, 54);
             this.labelPageName.TabIndex = 149;
@@ -666,6 +668,21 @@ namespace FluxTool_CleanerSystem_K4
             this.panel6.Size = new System.Drawing.Size(22, 824);
             this.panel6.TabIndex = 39;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Lime;
+            this.button1.Location = new System.Drawing.Point(296, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 50);
+            this.button1.TabIndex = 161;
+            this.button1.Text = "Buzzer\r\noff";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.pictureBoxAlarm_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -753,5 +770,6 @@ namespace FluxTool_CleanerSystem_K4
         private System.Windows.Forms.Button btnEventLog;
         private System.Windows.Forms.Timer simulationTimer;
         public System.Windows.Forms.Label labelInterlockEnaDis;
+        private System.Windows.Forms.Button button1;
     }
 }

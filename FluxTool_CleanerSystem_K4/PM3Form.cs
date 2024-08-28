@@ -209,7 +209,20 @@ namespace FluxTool_CleanerSystem_K4
                     if (btnInit.BackColor != Color.Transparent)
                         btnInit.BackColor = Color.Transparent;
                 }
-            }                
+            }
+
+            if ((Define.seqMode[module] == Define.MODE_PROCESS) && (Define.seqCtrl[module] == Define.CTRL_WAIT))
+            {
+                if (labelProcessWait.ForeColor == Color.LightGray)
+                    labelProcessWait.ForeColor = Color.Red;
+                else
+                    labelProcessWait.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                if (labelProcessWait.ForeColor != Color.LightGray)
+                    labelProcessWait.ForeColor = Color.LightGray;
+            }
 
             // Process recipe 정보
             if (Global.prcsInfo.prcsRecipeName[module] != null)
@@ -256,6 +269,17 @@ namespace FluxTool_CleanerSystem_K4
             {
                 if (CylinderHomeSns.BackColor != Color.Silver)
                     CylinderHomeSns.BackColor = Color.Silver;
+            }
+
+            if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+            {
+                textBoxDoor.Text = "Open";
+                textBoxDoor.BackColor = Color.OrangeRed;
+            }
+            else if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "On")
+            {
+                textBoxDoor.Text = "Close";
+                textBoxDoor.BackColor = Color.LightSkyBlue;
             }
 
             // Output display           
@@ -794,6 +818,12 @@ namespace FluxTool_CleanerSystem_K4
                                 MessageBox.Show("Back door is opened", "Notification");
                                 return;
                             }
+
+                            if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+                            {
+                                MessageBox.Show("Chamber door is opened", "Notification");
+                                return;
+                            }
                         }
 
                         if (MessageBox.Show("Do you want to proceed with the process?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
@@ -837,6 +867,12 @@ namespace FluxTool_CleanerSystem_K4
                             if (Global.GetDigValue((int)DigInputList.Back_Door_Sensor_i) == "Off")
                             {
                                 MessageBox.Show("Back door is opened", "Notification");
+                                return;
+                            }
+
+                            if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+                            {
+                                MessageBox.Show("Chamber door is opened", "Notification");
                                 return;
                             }
                         }
@@ -888,6 +924,12 @@ namespace FluxTool_CleanerSystem_K4
                             if (Global.GetDigValue((int)DigInputList.Back_Door_Sensor_i) == "Off")
                             {
                                 MessageBox.Show("Back door is opened", "Notification");
+                                return;
+                            }
+
+                            if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+                            {
+                                MessageBox.Show("Chamber door is opened", "Notification");
                                 return;
                             }
                         }

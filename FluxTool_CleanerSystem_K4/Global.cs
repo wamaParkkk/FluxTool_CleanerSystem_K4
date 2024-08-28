@@ -691,15 +691,13 @@ namespace FluxTool_CleanerSystem_K4
 
 
                 // 2024.02.19 hspark 추가
-                // 공정 중 Front door open시 Buzzer on
+                // 공정 중 Cover open시, Buzzer on
                 if ((Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_IDLE) ||
                     (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_IDLE) ||
                     (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_IDLE))
                 {
-                    if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
-                        //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On") &&
-
-                        (GetDigValue((int)DigInputList.Water_Level_Low_i) == "Off"))
+                    if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&         // 정상 상태                       
+                        (GetDigValue((int)DigInputList.Water_Level_Low_i) == "Off"))    // 정상 상태
                     {
                         if ((GetDigValue((int)DigInputList.Front_Door_Sensor_i) == "Off") ||
                             (GetDigValue((int)DigInputList.Left_Door_Sensor_i) == "Off") ||
@@ -714,7 +712,36 @@ namespace FluxTool_CleanerSystem_K4
                         }
                     }
                 }
-                ////////////////////////////////////////////////////////////////////////////////////////////////  
+                ////////////////////////////////////////////////////////////////////////////////////////////////
+
+                // 공정 중 Door open시, 시퀀스 Wait                
+                if (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "Off")
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_RUNNING))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_WAIT)
+                            Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_WAIT;
+                    }
+                }
+
+                if (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "Off")
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_RUNNING))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_WAIT)
+                            Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_WAIT;
+                    }
+                }
+
+                if (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_RUNNING))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_WAIT)
+                            Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_WAIT;
+                    }
+                }
+                ////////////////////////////////////////////////////////////////////////////////////////////////
             }
 
 
@@ -760,15 +787,15 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }                            
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#1] " + "EMO switch is on", ModuleName, "Event");                            
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#1] " + "EMO switch is on or Door is opened", ModuleName, "Event");                            
                             return false;
                         }                            
                     }
@@ -782,29 +809,29 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#1] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#1] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
                     else
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#1] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#1] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
@@ -819,15 +846,15 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#2] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#2] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
@@ -841,29 +868,29 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on or";
-                            EventLog("[INTERLOCK#2] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#2] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
                     else
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#2] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#2] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
@@ -878,15 +905,15 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#3] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#3] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
@@ -900,29 +927,29 @@ namespace FluxTool_CleanerSystem_K4
                 {
                     if (setValue == (uint)DigitalOffOn.On)
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#3] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#3] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }
                     else
                     {
-                        if (GetDigValue((int)DigInputList.EMO_Front_i) == "On") //&&
-                            //(GetDigValue((int)DigInputList.EMO_Rear_i) == "On"))
+                        if ((GetDigValue((int)DigInputList.EMO_Front_i) == "On") &&
+                            (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "On"))
                         {
                             return true;
                         }
                         else
                         {
-                            retMsg = "EMO switch is on";
-                            EventLog("[INTERLOCK#3] " + "EMO switch is on", ModuleName, "Event");
+                            retMsg = "EMO switch is on or Door is opened";
+                            EventLog("[INTERLOCK#3] " + "EMO switch is on or Door is opened", ModuleName, "Event");
                             return false;
                         }
                     }

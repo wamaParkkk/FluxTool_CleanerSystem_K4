@@ -209,7 +209,20 @@ namespace FluxTool_CleanerSystem_K4
                         btnCH1EnaDis.Enabled = true;
                 }
             }
-            
+
+            if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_WAIT))
+            {
+                if (labelCH1ProcessWait.ForeColor == Color.LightGray)
+                    labelCH1ProcessWait.ForeColor = Color.Red;
+                else
+                    labelCH1ProcessWait.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                if (labelCH1ProcessWait.ForeColor != Color.LightGray)
+                    labelCH1ProcessWait.ForeColor = Color.LightGray;
+            }
+
             if (Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM1] != null)
                 textBoxPM1RecipeName.Text = Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM1];
 
@@ -253,6 +266,17 @@ namespace FluxTool_CleanerSystem_K4
             {                                
                 if (PM1CylinderHomeSns.BackColor != Color.Silver)
                     PM1CylinderHomeSns.BackColor = Color.Silver;
+            }
+
+            if (Global.GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "Off")
+            {
+                textBoxCH1Door.Text = "Open";
+                textBoxCH1Door.BackColor = Color.OrangeRed;
+            }
+            else if (Global.GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "On")
+            {
+                textBoxCH1Door.Text = "Close";
+                textBoxCH1Door.BackColor = Color.LightSkyBlue;
             }
 
             if (Global.digSet.curDigSet[(int)DigOutputList.CH1_WaterValve_o] != null)
@@ -483,7 +507,20 @@ namespace FluxTool_CleanerSystem_K4
                         btnCH2EnaDis.Enabled = true;
                 }
             }
-                
+
+            if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_WAIT))
+            {
+                if (labelCH2ProcessWait.ForeColor == Color.LightGray)
+                    labelCH2ProcessWait.ForeColor = Color.Red;
+                else
+                    labelCH2ProcessWait.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                if (labelCH2ProcessWait.ForeColor != Color.LightGray)
+                    labelCH2ProcessWait.ForeColor = Color.LightGray;
+            }
+
             if (Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM2] != null)
                 textBoxPM2RecipeName.Text = Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM2];
 
@@ -527,6 +564,17 @@ namespace FluxTool_CleanerSystem_K4
             {
                 if (PM2CylinderHomeSns.BackColor != Color.Silver)
                     PM2CylinderHomeSns.BackColor = Color.Silver;
+            }
+
+            if (Global.GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "Off")
+            {
+                textBoxCH2Door.Text = "Open";
+                textBoxCH2Door.BackColor = Color.OrangeRed;
+            }
+            else if (Global.GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "On")
+            {
+                textBoxCH2Door.Text = "Close";
+                textBoxCH2Door.BackColor = Color.LightSkyBlue;
             }
 
             if (Global.digSet.curDigSet[(int)DigOutputList.CH2_WaterValve_o] != null)
@@ -756,7 +804,20 @@ namespace FluxTool_CleanerSystem_K4
                     if (!btnCH3EnaDis.Enabled)
                         btnCH3EnaDis.Enabled = true;
                 }
-            }                
+            }
+
+            if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_WAIT))
+            {
+                if (labelCH3ProcessWait.ForeColor == Color.LightGray)
+                    labelCH3ProcessWait.ForeColor = Color.Red;
+                else
+                    labelCH3ProcessWait.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                if (labelCH3ProcessWait.ForeColor != Color.LightGray)
+                    labelCH3ProcessWait.ForeColor = Color.LightGray;
+            }
 
             if (Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM3] != null)
                 textBoxPM3RecipeName.Text = Global.prcsInfo.prcsRecipeName[(byte)MODULE._PM3];
@@ -801,6 +862,17 @@ namespace FluxTool_CleanerSystem_K4
             {
                 if (PM3CylinderHomeSns.BackColor != Color.Silver)
                     PM3CylinderHomeSns.BackColor = Color.Silver;
+            }
+
+            if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+            {
+                textBoxCH3Door.Text = "Open";
+                textBoxCH3Door.BackColor = Color.OrangeRed;
+            }
+            else if (Global.GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "On")
+            {
+                textBoxCH3Door.Text = "Close";
+                textBoxCH3Door.BackColor = Color.LightSkyBlue;
             }
 
             if (Global.digSet.curDigSet[(int)DigOutputList.CH3_WaterValve_o] != null)

@@ -60,6 +60,8 @@ namespace FluxTool_CleanerSystem_K4
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxBoosterAir = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label1123 = new System.Windows.Forms.Label();
             this.textBoxAirknife = new System.Windows.Forms.TextBox();
             this.textBoxCurtainAir = new System.Windows.Forms.TextBox();
@@ -85,8 +87,9 @@ namespace FluxTool_CleanerSystem_K4
             this.imgCH2EnaDis = new System.Windows.Forms.PictureBox();
             this.btnCH2EnaDis = new System.Windows.Forms.Button();
             this.btnCylinderStop = new System.Windows.Forms.Button();
-            this.textBoxBoosterAir = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelProcessWait = new System.Windows.Forms.Label();
+            this.textBoxDoor = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -102,6 +105,7 @@ namespace FluxTool_CleanerSystem_K4
             ((System.ComponentModel.ISupportInitialize)(this.RightAir)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCH2EnaDis)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -511,6 +515,30 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Air Sol";
             // 
+            // textBoxBoosterAir
+            // 
+            this.textBoxBoosterAir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBoxBoosterAir.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBoosterAir.Location = new System.Drawing.Point(59, 87);
+            this.textBoxBoosterAir.Name = "textBoxBoosterAir";
+            this.textBoxBoosterAir.ReadOnly = true;
+            this.textBoxBoosterAir.Size = new System.Drawing.Size(100, 27);
+            this.textBoxBoosterAir.TabIndex = 273;
+            this.textBoxBoosterAir.TabStop = false;
+            this.textBoxBoosterAir.Tag = "5";
+            this.textBoxBoosterAir.Text = "--";
+            this.textBoxBoosterAir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxBoosterAir.Click += new System.EventHandler(this.Digital_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 92);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 17);
+            this.label6.TabIndex = 274;
+            this.label6.Text = "Booster";
+            // 
             // label1123
             // 
             this.label1123.AutoSize = true;
@@ -820,35 +848,50 @@ namespace FluxTool_CleanerSystem_K4
             this.btnCylinderStop.UseVisualStyleBackColor = false;
             this.btnCylinderStop.Click += new System.EventHandler(this.btnCylinderStop_Click);
             // 
-            // textBoxBoosterAir
+            // groupBox3
             // 
-            this.textBoxBoosterAir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBoxBoosterAir.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBoosterAir.Location = new System.Drawing.Point(59, 87);
-            this.textBoxBoosterAir.Name = "textBoxBoosterAir";
-            this.textBoxBoosterAir.ReadOnly = true;
-            this.textBoxBoosterAir.Size = new System.Drawing.Size(100, 27);
-            this.textBoxBoosterAir.TabIndex = 273;
-            this.textBoxBoosterAir.TabStop = false;
-            this.textBoxBoosterAir.Tag = "5";
-            this.textBoxBoosterAir.Text = "--";
-            this.textBoxBoosterAir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxBoosterAir.Click += new System.EventHandler(this.Digital_Click);
+            this.groupBox3.Controls.Add(this.labelProcessWait);
+            this.groupBox3.Controls.Add(this.textBoxDoor);
+            this.groupBox3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(525, 181);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(172, 96);
+            this.groupBox3.TabIndex = 421;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Door sensor";
             // 
-            // label6
+            // labelProcessWait
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 17);
-            this.label6.TabIndex = 274;
-            this.label6.Text = "Booster";
+            this.labelProcessWait.AutoSize = true;
+            this.labelProcessWait.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProcessWait.ForeColor = System.Drawing.Color.LightGray;
+            this.labelProcessWait.Location = new System.Drawing.Point(6, 54);
+            this.labelProcessWait.Name = "labelProcessWait";
+            this.labelProcessWait.Size = new System.Drawing.Size(156, 32);
+            this.labelProcessWait.TabIndex = 264;
+            this.labelProcessWait.Text = "Process wait";
+            // 
+            // textBoxDoor
+            // 
+            this.textBoxDoor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBoxDoor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBoxDoor.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDoor.Location = new System.Drawing.Point(6, 24);
+            this.textBoxDoor.Name = "textBoxDoor";
+            this.textBoxDoor.ReadOnly = true;
+            this.textBoxDoor.Size = new System.Drawing.Size(153, 27);
+            this.textBoxDoor.TabIndex = 263;
+            this.textBoxDoor.TabStop = false;
+            this.textBoxDoor.Tag = "0";
+            this.textBoxDoor.Text = "--";
+            this.textBoxDoor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PM2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnCylinderStop);
             this.Controls.Add(this.btnCH2EnaDis);
             this.Controls.Add(this.imgCH2EnaDis);
@@ -896,6 +939,8 @@ namespace FluxTool_CleanerSystem_K4
             ((System.ComponentModel.ISupportInitialize)(this.RightAir)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgCH2EnaDis)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -960,5 +1005,8 @@ namespace FluxTool_CleanerSystem_K4
         private System.Windows.Forms.Button btnCylinderStop;
         private System.Windows.Forms.TextBox textBoxBoosterAir;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label labelProcessWait;
+        private System.Windows.Forms.TextBox textBoxDoor;
     }
 }

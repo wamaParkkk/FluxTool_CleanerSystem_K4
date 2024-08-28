@@ -83,9 +83,11 @@ namespace FluxTool_CleanerSystem_K4
 
         Spare19_i = 19,
         Spare20_i = 20,
-        Spare21_i = 21,
-        Spare22_i = 22,
-        Spare23_i = 23,
+
+        CH1_Door_Sensor_i = 21,
+        CH2_Door_Sensor_i = 22,
+        CH3_Door_Sensor_i = 23,
+        
         Spare24_i = 24,
         Spare25_i = 25,
         Spare26_i = 26,
@@ -307,7 +309,8 @@ namespace FluxTool_CleanerSystem_K4
         public const byte CTRL_ALARM = 3;
         public const byte CTRL_RETRY = 4;
         public const byte CTRL_HOLD = 5;
-        public const byte CTRL_ABORT = 6;
+        public const byte CTRL_WAIT = 6;
+        public const byte CTRL_ABORT = 7;
 
         public const byte STS_IDLE = 0;
         public const byte STS_PROCESS_ING = 1;

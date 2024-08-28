@@ -149,6 +149,15 @@ namespace FluxTool_CleanerSystem_K4
             this.PM1Water1 = new System.Windows.Forms.PictureBox();
             this.imgCH2EnaDis = new System.Windows.Forms.PictureBox();
             this.imgCH3EnaDis = new System.Windows.Forms.PictureBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelCH1ProcessWait = new System.Windows.Forms.Label();
+            this.textBoxCH1Door = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labelCH2ProcessWait = new System.Windows.Forms.Label();
+            this.textBoxCH2Door = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.labelCH3ProcessWait = new System.Windows.Forms.Label();
+            this.textBoxCH3Door = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -174,6 +183,9 @@ namespace FluxTool_CleanerSystem_K4
             ((System.ComponentModel.ISupportInitialize)(this.PM1Water1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCH2EnaDis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCH3EnaDis)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // displayTimer
@@ -1671,12 +1683,129 @@ namespace FluxTool_CleanerSystem_K4
             this.imgCH3EnaDis.TabIndex = 416;
             this.imgCH3EnaDis.TabStop = false;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.labelCH1ProcessWait);
+            this.groupBox4.Controls.Add(this.textBoxCH1Door);
+            this.groupBox4.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(112, 209);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(172, 96);
+            this.groupBox4.TabIndex = 420;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Door sensor";
+            // 
+            // labelCH1ProcessWait
+            // 
+            this.labelCH1ProcessWait.AutoSize = true;
+            this.labelCH1ProcessWait.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCH1ProcessWait.ForeColor = System.Drawing.Color.LightGray;
+            this.labelCH1ProcessWait.Location = new System.Drawing.Point(6, 54);
+            this.labelCH1ProcessWait.Name = "labelCH1ProcessWait";
+            this.labelCH1ProcessWait.Size = new System.Drawing.Size(156, 32);
+            this.labelCH1ProcessWait.TabIndex = 264;
+            this.labelCH1ProcessWait.Text = "Process wait";
+            // 
+            // textBoxCH1Door
+            // 
+            this.textBoxCH1Door.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBoxCH1Door.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBoxCH1Door.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCH1Door.Location = new System.Drawing.Point(6, 24);
+            this.textBoxCH1Door.Name = "textBoxCH1Door";
+            this.textBoxCH1Door.ReadOnly = true;
+            this.textBoxCH1Door.Size = new System.Drawing.Size(153, 27);
+            this.textBoxCH1Door.TabIndex = 263;
+            this.textBoxCH1Door.TabStop = false;
+            this.textBoxCH1Door.Tag = "0";
+            this.textBoxCH1Door.Text = "--";
+            this.textBoxCH1Door.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.labelCH2ProcessWait);
+            this.groupBox5.Controls.Add(this.textBoxCH2Door);
+            this.groupBox5.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(483, 209);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(172, 96);
+            this.groupBox5.TabIndex = 422;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Door sensor";
+            // 
+            // labelCH2ProcessWait
+            // 
+            this.labelCH2ProcessWait.AutoSize = true;
+            this.labelCH2ProcessWait.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCH2ProcessWait.ForeColor = System.Drawing.Color.LightGray;
+            this.labelCH2ProcessWait.Location = new System.Drawing.Point(6, 54);
+            this.labelCH2ProcessWait.Name = "labelCH2ProcessWait";
+            this.labelCH2ProcessWait.Size = new System.Drawing.Size(156, 32);
+            this.labelCH2ProcessWait.TabIndex = 264;
+            this.labelCH2ProcessWait.Text = "Process wait";
+            // 
+            // textBoxCH2Door
+            // 
+            this.textBoxCH2Door.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBoxCH2Door.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBoxCH2Door.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCH2Door.Location = new System.Drawing.Point(6, 24);
+            this.textBoxCH2Door.Name = "textBoxCH2Door";
+            this.textBoxCH2Door.ReadOnly = true;
+            this.textBoxCH2Door.Size = new System.Drawing.Size(153, 27);
+            this.textBoxCH2Door.TabIndex = 263;
+            this.textBoxCH2Door.TabStop = false;
+            this.textBoxCH2Door.Tag = "0";
+            this.textBoxCH2Door.Text = "--";
+            this.textBoxCH2Door.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.labelCH3ProcessWait);
+            this.groupBox6.Controls.Add(this.textBoxCH3Door);
+            this.groupBox6.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(856, 209);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(172, 96);
+            this.groupBox6.TabIndex = 424;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Door sensor";
+            // 
+            // labelCH3ProcessWait
+            // 
+            this.labelCH3ProcessWait.AutoSize = true;
+            this.labelCH3ProcessWait.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCH3ProcessWait.ForeColor = System.Drawing.Color.LightGray;
+            this.labelCH3ProcessWait.Location = new System.Drawing.Point(6, 54);
+            this.labelCH3ProcessWait.Name = "labelCH3ProcessWait";
+            this.labelCH3ProcessWait.Size = new System.Drawing.Size(156, 32);
+            this.labelCH3ProcessWait.TabIndex = 264;
+            this.labelCH3ProcessWait.Text = "Process wait";
+            // 
+            // textBoxCH3Door
+            // 
+            this.textBoxCH3Door.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBoxCH3Door.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBoxCH3Door.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCH3Door.Location = new System.Drawing.Point(6, 24);
+            this.textBoxCH3Door.Name = "textBoxCH3Door";
+            this.textBoxCH3Door.ReadOnly = true;
+            this.textBoxCH3Door.Size = new System.Drawing.Size(153, 27);
+            this.textBoxCH3Door.TabIndex = 263;
+            this.textBoxCH3Door.TabStop = false;
+            this.textBoxCH3Door.Tag = "0";
+            this.textBoxCH3Door.Text = "--";
+            this.textBoxCH3Door.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // OperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1172, 824);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.imgCH1EnaDis);
             this.Controls.Add(this.imgCH3EnaDis);
             this.Controls.Add(this.imgCH2EnaDis);
@@ -1773,6 +1902,12 @@ namespace FluxTool_CleanerSystem_K4
             ((System.ComponentModel.ISupportInitialize)(this.PM1Water1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCH2EnaDis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCH3EnaDis)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1898,5 +2033,14 @@ namespace FluxTool_CleanerSystem_K4
         private System.Windows.Forms.PictureBox imgCH1EnaDis;
         private System.Windows.Forms.PictureBox imgCH3EnaDis;
         private System.Windows.Forms.PictureBox imgCH2EnaDis;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label labelCH1ProcessWait;
+        private System.Windows.Forms.TextBox textBoxCH1Door;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label labelCH2ProcessWait;
+        private System.Windows.Forms.TextBox textBoxCH2Door;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label labelCH3ProcessWait;
+        private System.Windows.Forms.TextBox textBoxCH3Door;
     }
 }
