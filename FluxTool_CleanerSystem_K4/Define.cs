@@ -81,13 +81,12 @@ namespace FluxTool_CleanerSystem_K4
         CH3_Cylinder_Bwd_i = 17,
         CH3_Cylinder_Fwd_i = 18,    // B접
 
-        Spare19_i = 19,
-        Spare20_i = 20,
+        CH1_Door_Sensor_i = 19,
+        CH2_Door_Sensor_i = 20,
+        CH3_Door_Sensor_i = 21,
 
-        CH1_Door_Sensor_i = 21,
-        CH2_Door_Sensor_i = 22,
-        CH3_Door_Sensor_i = 23,
-        
+        Spare22_i = 22,
+        Spare23_i = 23,        
         Spare24_i = 24,
         Spare25_i = 25,
         Spare26_i = 26,

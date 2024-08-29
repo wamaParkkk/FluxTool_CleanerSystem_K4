@@ -44,13 +44,11 @@ namespace FluxTool_CleanerSystem_K4
             this.rjToggleButton4 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
             this.label36 = new System.Windows.Forms.Label();
             this.rjToggleButton3 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
-            this.label16 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.rjToggleButton2 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
             this.label18 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.pnl_DI22 = new System.Windows.Forms.Panel();
             this.rjToggleButton1 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
             this.pnl_DI21 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
@@ -64,6 +62,8 @@ namespace FluxTool_CleanerSystem_K4
             this.label22 = new System.Windows.Forms.Label();
             this.pnl_DI11 = new System.Windows.Forms.Panel();
             this.pnl_DI19 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.pnl_DI22 = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.pnl_DI07 = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
@@ -83,23 +83,15 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
-            this.pnl_DI26 = new System.Windows.Forms.Panel();
             this.label50 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.rjToggleButton15 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
-            this.label27 = new System.Windows.Forms.Label();
             this.rjToggleButton14 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
-            this.pnl_DI25 = new System.Windows.Forms.Panel();
             this.label60 = new System.Windows.Forms.Label();
-            this.pnl_DI24 = new System.Windows.Forms.Panel();
             this.rjToggleButton13 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
-            this.pnl_DI23 = new System.Windows.Forms.Panel();
             this.rjToggleButton12 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
             this.rjToggleButton11 = new FluxTool_CleanerSystem_K4.RJControls.RJToggleButton();
             this.label63 = new System.Windows.Forms.Label();
@@ -113,6 +105,14 @@ namespace FluxTool_CleanerSystem_K4
             this.pnl_DI14 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_DI13 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.pnl_DI26 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pnl_DI25 = new System.Windows.Forms.Panel();
+            this.pnl_DI24 = new System.Windows.Forms.Panel();
+            this.pnl_DI23 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.pnl_DI31 = new System.Windows.Forms.Panel();
@@ -197,14 +197,10 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox1.Controls.Add(this.label36);
             this.groupBox1.Controls.Add(this.rjToggleButton3);
             this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.rjToggleButton2);
-            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.rjToggleButton1);
-            this.groupBox1.Controls.Add(this.pnl_DI21);
             this.groupBox1.Controls.Add(this.label33);
-            this.groupBox1.Controls.Add(this.pnl_DI20);
             this.groupBox1.Controls.Add(this.rjToggleButton0);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.pnl_DI10);
@@ -382,17 +378,6 @@ namespace FluxTool_CleanerSystem_K4
             this.rjToggleButton3.UseVisualStyleBackColor = true;
             this.rjToggleButton3.Click += new System.EventHandler(this.CH1_IO_Click);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Navy;
-            this.label16.Location = new System.Drawing.Point(48, 211);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 21);
-            this.label16.TabIndex = 155;
-            this.label16.Text = "[X22] Door sensor";
-            // 
             // label35
             // 
             this.label35.AutoSize = true;
@@ -409,7 +394,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Navy;
-            this.label17.Location = new System.Drawing.Point(48, 267);
+            this.label17.Location = new System.Drawing.Point(48, 211);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(145, 21);
             this.label17.TabIndex = 154;
@@ -435,12 +420,12 @@ namespace FluxTool_CleanerSystem_K4
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Silver;
-            this.label18.Location = new System.Drawing.Point(48, 239);
+            this.label18.ForeColor = System.Drawing.Color.Navy;
+            this.label18.Location = new System.Drawing.Point(48, 211);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 21);
+            this.label18.Size = new System.Drawing.Size(145, 21);
             this.label18.TabIndex = 153;
-            this.label18.Text = "[X20] Spare";
+            this.label18.Text = "[X20] Door sensor";
             // 
             // label34
             // 
@@ -452,14 +437,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label34.Size = new System.Drawing.Size(119, 21);
             this.label34.TabIndex = 27;
             this.label34.Text = "[Y01] Air knife";
-            // 
-            // pnl_DI22
-            // 
-            this.pnl_DI22.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI22.Location = new System.Drawing.Point(20, 211);
-            this.pnl_DI22.Name = "pnl_DI22";
-            this.pnl_DI22.Size = new System.Drawing.Size(22, 22);
-            this.pnl_DI22.TabIndex = 152;
             // 
             // rjToggleButton1
             // 
@@ -480,7 +457,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI21
             // 
             this.pnl_DI21.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI21.Location = new System.Drawing.Point(20, 267);
+            this.pnl_DI21.Location = new System.Drawing.Point(20, 211);
             this.pnl_DI21.Name = "pnl_DI21";
             this.pnl_DI21.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI21.TabIndex = 151;
@@ -499,7 +476,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI20
             // 
             this.pnl_DI20.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI20.Location = new System.Drawing.Point(20, 239);
+            this.pnl_DI20.Location = new System.Drawing.Point(20, 211);
             this.pnl_DI20.Name = "pnl_DI20";
             this.pnl_DI20.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI20.TabIndex = 150;
@@ -573,12 +550,12 @@ namespace FluxTool_CleanerSystem_K4
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Silver;
+            this.label22.ForeColor = System.Drawing.Color.Navy;
             this.label22.Location = new System.Drawing.Point(48, 211);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(97, 21);
+            this.label22.Size = new System.Drawing.Size(145, 21);
             this.label22.TabIndex = 147;
-            this.label22.Text = "[X19] Spare";
+            this.label22.Text = "[X19] Door sensor";
             // 
             // pnl_DI11
             // 
@@ -595,6 +572,25 @@ namespace FluxTool_CleanerSystem_K4
             this.pnl_DI19.Name = "pnl_DI19";
             this.pnl_DI19.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI19.TabIndex = 70;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Silver;
+            this.label16.Location = new System.Drawing.Point(48, 239);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(97, 21);
+            this.label16.TabIndex = 155;
+            this.label16.Text = "[X22] Spare";
+            // 
+            // pnl_DI22
+            // 
+            this.pnl_DI22.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_DI22.Location = new System.Drawing.Point(20, 239);
+            this.pnl_DI22.Name = "pnl_DI22";
+            this.pnl_DI22.Size = new System.Drawing.Size(22, 22);
+            this.pnl_DI22.TabIndex = 152;
             // 
             // label29
             // 
@@ -758,20 +754,20 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox2.Controls.Add(this.label50);
             this.groupBox2.Controls.Add(this.label57);
             this.groupBox2.Controls.Add(this.rjToggleButton15);
-            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.rjToggleButton14);
             this.groupBox2.Controls.Add(this.label60);
             this.groupBox2.Controls.Add(this.rjToggleButton13);
-            this.groupBox2.Controls.Add(this.pnl_DI22);
             this.groupBox2.Controls.Add(this.rjToggleButton12);
             this.groupBox2.Controls.Add(this.rjToggleButton11);
             this.groupBox2.Controls.Add(this.label63);
             this.groupBox2.Controls.Add(this.rjToggleButton10);
+            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label64);
             this.groupBox2.Controls.Add(this.rjToggleButton9);
             this.groupBox2.Controls.Add(this.rjToggleButton8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.pnl_DI15);
+            this.groupBox2.Controls.Add(this.pnl_DI20);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.pnl_DI14);
             this.groupBox2.Controls.Add(this.label7);
@@ -807,17 +803,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label42.TabIndex = 95;
             this.label42.Text = "[Y12] Cylinder pwr";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Silver;
-            this.label24.Location = new System.Drawing.Point(48, 295);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(97, 21);
-            this.label24.TabIndex = 165;
-            this.label24.Text = "[X26] Spare";
-            // 
             // label43
             // 
             this.label43.AutoSize = true;
@@ -851,14 +836,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label66.TabIndex = 87;
             this.label66.Text = "Input";
             // 
-            // pnl_DI26
-            // 
-            this.pnl_DI26.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI26.Location = new System.Drawing.Point(20, 295);
-            this.pnl_DI26.Name = "pnl_DI26";
-            this.pnl_DI26.Size = new System.Drawing.Size(22, 22);
-            this.pnl_DI26.TabIndex = 162;
-            // 
             // label50
             // 
             this.label50.AutoSize = true;
@@ -870,17 +847,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label50.TabIndex = 86;
             this.label50.Text = "Output";
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Silver;
-            this.label25.Location = new System.Drawing.Point(48, 267);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(97, 21);
-            this.label25.TabIndex = 161;
-            this.label25.Text = "[X25] Spare";
-            // 
             // label57
             // 
             this.label57.AutoSize = true;
@@ -891,17 +857,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label57.Size = new System.Drawing.Size(97, 21);
             this.label57.TabIndex = 73;
             this.label57.Text = "[Y15] Spare";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Silver;
-            this.label26.Location = new System.Drawing.Point(48, 239);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(97, 21);
-            this.label26.TabIndex = 160;
-            this.label26.Text = "[X24] Spare";
             // 
             // rjToggleButton15
             // 
@@ -919,17 +874,6 @@ namespace FluxTool_CleanerSystem_K4
             this.rjToggleButton15.UseVisualStyleBackColor = true;
             this.rjToggleButton15.Click += new System.EventHandler(this.CH2_IO_Click);
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Navy;
-            this.label27.Location = new System.Drawing.Point(48, 211);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(145, 21);
-            this.label27.TabIndex = 159;
-            this.label27.Text = "[X23] Door sensor";
-            // 
             // rjToggleButton14
             // 
             this.rjToggleButton14.AutoSize = true;
@@ -946,14 +890,6 @@ namespace FluxTool_CleanerSystem_K4
             this.rjToggleButton14.UseVisualStyleBackColor = true;
             this.rjToggleButton14.Click += new System.EventHandler(this.CH2_IO_Click);
             // 
-            // pnl_DI25
-            // 
-            this.pnl_DI25.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI25.Location = new System.Drawing.Point(20, 267);
-            this.pnl_DI25.Name = "pnl_DI25";
-            this.pnl_DI25.Size = new System.Drawing.Size(22, 22);
-            this.pnl_DI25.TabIndex = 158;
-            // 
             // label60
             // 
             this.label60.AutoSize = true;
@@ -964,14 +900,6 @@ namespace FluxTool_CleanerSystem_K4
             this.label60.Size = new System.Drawing.Size(136, 21);
             this.label60.TabIndex = 67;
             this.label60.Text = "[Y13] Booster air";
-            // 
-            // pnl_DI24
-            // 
-            this.pnl_DI24.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI24.Location = new System.Drawing.Point(20, 239);
-            this.pnl_DI24.Name = "pnl_DI24";
-            this.pnl_DI24.Size = new System.Drawing.Size(22, 22);
-            this.pnl_DI24.TabIndex = 157;
             // 
             // rjToggleButton13
             // 
@@ -988,14 +916,6 @@ namespace FluxTool_CleanerSystem_K4
             this.rjToggleButton13.Tag = "13";
             this.rjToggleButton13.UseVisualStyleBackColor = true;
             this.rjToggleButton13.Click += new System.EventHandler(this.CH2_IO_Click);
-            // 
-            // pnl_DI23
-            // 
-            this.pnl_DI23.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI23.Location = new System.Drawing.Point(20, 211);
-            this.pnl_DI23.Name = "pnl_DI23";
-            this.pnl_DI23.Size = new System.Drawing.Size(22, 22);
-            this.pnl_DI23.TabIndex = 156;
             // 
             // rjToggleButton12
             // 
@@ -1156,31 +1076,103 @@ namespace FluxTool_CleanerSystem_K4
             this.pnl_DI13.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI13.TabIndex = 24;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Silver;
+            this.label24.Location = new System.Drawing.Point(48, 351);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(97, 21);
+            this.label24.TabIndex = 165;
+            this.label24.Text = "[X26] Spare";
+            // 
+            // pnl_DI26
+            // 
+            this.pnl_DI26.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_DI26.Location = new System.Drawing.Point(20, 351);
+            this.pnl_DI26.Name = "pnl_DI26";
+            this.pnl_DI26.Size = new System.Drawing.Size(22, 22);
+            this.pnl_DI26.TabIndex = 162;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Silver;
+            this.label25.Location = new System.Drawing.Point(48, 323);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(97, 21);
+            this.label25.TabIndex = 161;
+            this.label25.Text = "[X25] Spare";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Silver;
+            this.label26.Location = new System.Drawing.Point(48, 295);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(97, 21);
+            this.label26.TabIndex = 160;
+            this.label26.Text = "[X24] Spare";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Silver;
+            this.label27.Location = new System.Drawing.Point(48, 267);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(97, 21);
+            this.label27.TabIndex = 159;
+            this.label27.Text = "[X23] Spare";
+            // 
+            // pnl_DI25
+            // 
+            this.pnl_DI25.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_DI25.Location = new System.Drawing.Point(20, 323);
+            this.pnl_DI25.Name = "pnl_DI25";
+            this.pnl_DI25.Size = new System.Drawing.Size(22, 22);
+            this.pnl_DI25.TabIndex = 158;
+            // 
+            // pnl_DI24
+            // 
+            this.pnl_DI24.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_DI24.Location = new System.Drawing.Point(20, 295);
+            this.pnl_DI24.Name = "pnl_DI24";
+            this.pnl_DI24.Size = new System.Drawing.Size(22, 22);
+            this.pnl_DI24.TabIndex = 157;
+            // 
+            // pnl_DI23
+            // 
+            this.pnl_DI23.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_DI23.Location = new System.Drawing.Point(20, 267);
+            this.pnl_DI23.Name = "pnl_DI23";
+            this.pnl_DI23.Size = new System.Drawing.Size(22, 22);
+            this.pnl_DI23.TabIndex = 156;
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label32);
-            this.groupBox3.Controls.Add(this.pnl_DI31);
             this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Controls.Add(this.label31);
-            this.groupBox3.Controls.Add(this.pnl_DI30);
-            this.groupBox3.Controls.Add(this.pnl_DI29);
             this.groupBox3.Controls.Add(this.pnl_DI26);
-            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.pnl_DI22);
             this.groupBox3.Controls.Add(this.pnl_DI18);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.pnl_DI28);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.pnl_DI27);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.pnl_DI17);
+            this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.pnl_DI25);
             this.groupBox3.Controls.Add(this.pnl_DI16);
             this.groupBox3.Controls.Add(this.label75);
+            this.groupBox3.Controls.Add(this.pnl_DI21);
             this.groupBox3.Controls.Add(this.pnl_DI24);
             this.groupBox3.Controls.Add(this.label74);
             this.groupBox3.Controls.Add(this.label72);
@@ -1214,7 +1206,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.Silver;
-            this.label32.Location = new System.Drawing.Point(48, 436);
+            this.label32.Location = new System.Drawing.Point(48, 463);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(97, 21);
             this.label32.TabIndex = 173;
@@ -1223,7 +1215,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI31
             // 
             this.pnl_DI31.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI31.Location = new System.Drawing.Point(20, 436);
+            this.pnl_DI31.Location = new System.Drawing.Point(20, 463);
             this.pnl_DI31.Name = "pnl_DI31";
             this.pnl_DI31.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI31.TabIndex = 172;
@@ -1233,7 +1225,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.Silver;
-            this.label30.Location = new System.Drawing.Point(48, 408);
+            this.label30.Location = new System.Drawing.Point(48, 435);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(97, 21);
             this.label30.TabIndex = 171;
@@ -1244,7 +1236,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.Silver;
-            this.label31.Location = new System.Drawing.Point(48, 380);
+            this.label31.Location = new System.Drawing.Point(48, 407);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(97, 21);
             this.label31.TabIndex = 170;
@@ -1253,7 +1245,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI30
             // 
             this.pnl_DI30.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI30.Location = new System.Drawing.Point(20, 408);
+            this.pnl_DI30.Location = new System.Drawing.Point(20, 435);
             this.pnl_DI30.Name = "pnl_DI30";
             this.pnl_DI30.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI30.TabIndex = 169;
@@ -1261,7 +1253,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI29
             // 
             this.pnl_DI29.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI29.Location = new System.Drawing.Point(20, 380);
+            this.pnl_DI29.Location = new System.Drawing.Point(20, 407);
             this.pnl_DI29.Name = "pnl_DI29";
             this.pnl_DI29.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI29.TabIndex = 168;
@@ -1271,7 +1263,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Silver;
-            this.label19.Location = new System.Drawing.Point(48, 352);
+            this.label19.Location = new System.Drawing.Point(48, 379);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 21);
             this.label19.TabIndex = 167;
@@ -1293,7 +1285,7 @@ namespace FluxTool_CleanerSystem_K4
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Silver;
-            this.label23.Location = new System.Drawing.Point(48, 324);
+            this.label23.Location = new System.Drawing.Point(48, 379);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(97, 21);
             this.label23.TabIndex = 166;
@@ -1310,7 +1302,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI28
             // 
             this.pnl_DI28.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI28.Location = new System.Drawing.Point(20, 352);
+            this.pnl_DI28.Location = new System.Drawing.Point(20, 379);
             this.pnl_DI28.Name = "pnl_DI28";
             this.pnl_DI28.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI28.TabIndex = 164;
@@ -1329,7 +1321,7 @@ namespace FluxTool_CleanerSystem_K4
             // pnl_DI27
             // 
             this.pnl_DI27.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_DI27.Location = new System.Drawing.Point(20, 324);
+            this.pnl_DI27.Location = new System.Drawing.Point(20, 379);
             this.pnl_DI27.Name = "pnl_DI27";
             this.pnl_DI27.Size = new System.Drawing.Size(22, 22);
             this.pnl_DI27.TabIndex = 163;
@@ -1601,15 +1593,22 @@ namespace FluxTool_CleanerSystem_K4
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.label29);
+            this.groupBox4.Controls.Add(this.pnl_DI31);
             this.groupBox4.Controls.Add(this.label92);
             this.groupBox4.Controls.Add(this.pnl_DI07);
+            this.groupBox4.Controls.Add(this.label30);
             this.groupBox4.Controls.Add(this.label91);
+            this.groupBox4.Controls.Add(this.label31);
             this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.pnl_DI30);
             this.groupBox4.Controls.Add(this.pnl_DI06);
+            this.groupBox4.Controls.Add(this.pnl_DI29);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.label94);
+            this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.label93);
             this.groupBox4.Controls.Add(this.label85);
             this.groupBox4.Controls.Add(this.rjToggleButton31);
@@ -1617,6 +1616,7 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox4.Controls.Add(this.rjToggleButton30);
             this.groupBox4.Controls.Add(this.label87);
             this.groupBox4.Controls.Add(this.rjToggleButton29);
+            this.groupBox4.Controls.Add(this.pnl_DI28);
             this.groupBox4.Controls.Add(this.label88);
             this.groupBox4.Controls.Add(this.rjToggleButton28);
             this.groupBox4.Controls.Add(this.label89);
