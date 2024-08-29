@@ -52,10 +52,13 @@ namespace FluxTool_CleanerSystem_K4
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBoxFront = new System.Windows.Forms.CheckBox();
-            this.checkBoxLeft = new System.Windows.Forms.CheckBox();
-            this.checkBoxBack = new System.Windows.Forms.CheckBox();
             this.checkBoxRight = new System.Windows.Forms.CheckBox();
+            this.checkBoxBack = new System.Windows.Forms.CheckBox();
+            this.checkBoxLeft = new System.Windows.Forms.CheckBox();
+            this.checkBoxFront = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBoxPinTimeInterval = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -63,6 +66,9 @@ namespace FluxTool_CleanerSystem_K4
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtBoxPinTimeInterval);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtBoxWaterFillTimeout);
             this.groupBox1.Controls.Add(this.label6);
@@ -85,7 +91,7 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox1.Size = new System.Drawing.Size(550, 432);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "< Time out >";
+            this.groupBox1.Text = "< Time set >";
             // 
             // label4
             // 
@@ -362,29 +368,17 @@ namespace FluxTool_CleanerSystem_K4
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stop the process when the selected cover is opened";
             // 
-            // checkBoxFront
+            // checkBoxRight
             // 
-            this.checkBoxFront.AutoSize = true;
-            this.checkBoxFront.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxFront.Location = new System.Drawing.Point(118, 46);
-            this.checkBoxFront.Name = "checkBoxFront";
-            this.checkBoxFront.Size = new System.Drawing.Size(80, 29);
-            this.checkBoxFront.TabIndex = 0;
-            this.checkBoxFront.Text = "Front";
-            this.checkBoxFront.UseVisualStyleBackColor = true;
-            this.checkBoxFront.Click += new System.EventHandler(this.checkBoxFront_Click);
-            // 
-            // checkBoxLeft
-            // 
-            this.checkBoxLeft.AutoSize = true;
-            this.checkBoxLeft.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxLeft.Location = new System.Drawing.Point(204, 46);
-            this.checkBoxLeft.Name = "checkBoxLeft";
-            this.checkBoxLeft.Size = new System.Drawing.Size(65, 29);
-            this.checkBoxLeft.TabIndex = 1;
-            this.checkBoxLeft.Text = "Left";
-            this.checkBoxLeft.UseVisualStyleBackColor = true;
-            this.checkBoxLeft.Click += new System.EventHandler(this.checkBoxFront_Click);
+            this.checkBoxRight.AutoSize = true;
+            this.checkBoxRight.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxRight.Location = new System.Drawing.Point(354, 46);
+            this.checkBoxRight.Name = "checkBoxRight";
+            this.checkBoxRight.Size = new System.Drawing.Size(78, 29);
+            this.checkBoxRight.TabIndex = 3;
+            this.checkBoxRight.Text = "Right";
+            this.checkBoxRight.UseVisualStyleBackColor = true;
+            this.checkBoxRight.Click += new System.EventHandler(this.checkBoxFront_Click);
             // 
             // checkBoxBack
             // 
@@ -398,17 +392,65 @@ namespace FluxTool_CleanerSystem_K4
             this.checkBoxBack.UseVisualStyleBackColor = true;
             this.checkBoxBack.Click += new System.EventHandler(this.checkBoxFront_Click);
             // 
-            // checkBoxRight
+            // checkBoxLeft
             // 
-            this.checkBoxRight.AutoSize = true;
-            this.checkBoxRight.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxRight.Location = new System.Drawing.Point(354, 46);
-            this.checkBoxRight.Name = "checkBoxRight";
-            this.checkBoxRight.Size = new System.Drawing.Size(78, 29);
-            this.checkBoxRight.TabIndex = 3;
-            this.checkBoxRight.Text = "Right";
-            this.checkBoxRight.UseVisualStyleBackColor = true;
-            this.checkBoxRight.Click += new System.EventHandler(this.checkBoxFront_Click);
+            this.checkBoxLeft.AutoSize = true;
+            this.checkBoxLeft.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxLeft.Location = new System.Drawing.Point(204, 46);
+            this.checkBoxLeft.Name = "checkBoxLeft";
+            this.checkBoxLeft.Size = new System.Drawing.Size(65, 29);
+            this.checkBoxLeft.TabIndex = 1;
+            this.checkBoxLeft.Text = "Left";
+            this.checkBoxLeft.UseVisualStyleBackColor = true;
+            this.checkBoxLeft.Click += new System.EventHandler(this.checkBoxFront_Click);
+            // 
+            // checkBoxFront
+            // 
+            this.checkBoxFront.AutoSize = true;
+            this.checkBoxFront.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxFront.Location = new System.Drawing.Point(118, 46);
+            this.checkBoxFront.Name = "checkBoxFront";
+            this.checkBoxFront.Size = new System.Drawing.Size(80, 29);
+            this.checkBoxFront.TabIndex = 0;
+            this.checkBoxFront.Text = "Front";
+            this.checkBoxFront.UseVisualStyleBackColor = true;
+            this.checkBoxFront.Click += new System.EventHandler(this.checkBoxFront_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Navy;
+            this.label7.Location = new System.Drawing.Point(495, 155);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 25);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Sec";
+            // 
+            // txtBoxPinTimeInterval
+            // 
+            this.txtBoxPinTimeInterval.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBoxPinTimeInterval.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtBoxPinTimeInterval.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPinTimeInterval.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBoxPinTimeInterval.Location = new System.Drawing.Point(333, 150);
+            this.txtBoxPinTimeInterval.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtBoxPinTimeInterval.Name = "txtBoxPinTimeInterval";
+            this.txtBoxPinTimeInterval.ReadOnly = true;
+            this.txtBoxPinTimeInterval.Size = new System.Drawing.Size(152, 30);
+            this.txtBoxPinTimeInterval.TabIndex = 49;
+            this.txtBoxPinTimeInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Navy;
+            this.label8.Location = new System.Drawing.Point(26, 150);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(246, 25);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "Pin up/down time interval";
             // 
             // ConfigureForm
             // 
@@ -463,5 +505,8 @@ namespace FluxTool_CleanerSystem_K4
         private System.Windows.Forms.CheckBox checkBoxLeft;
         private System.Windows.Forms.CheckBox checkBoxFront;
         private System.Windows.Forms.CheckBox checkBoxRight;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBoxPinTimeInterval;
+        private System.Windows.Forms.Label label8;
     }
 }

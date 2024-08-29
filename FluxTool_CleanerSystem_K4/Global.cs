@@ -723,6 +723,14 @@ namespace FluxTool_CleanerSystem_K4
                             Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_WAIT;
                     }
                 }
+                else
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_WAIT))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_RUNNING)
+                            Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_RUNNING;
+                    }
+                }
 
                 if (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "Off")
                 {
@@ -732,6 +740,14 @@ namespace FluxTool_CleanerSystem_K4
                             Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_WAIT;
                     }
                 }
+                else
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_WAIT))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_RUNNING)
+                            Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_RUNNING;
+                    }
+                }
 
                 if (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
                 {
@@ -739,6 +755,14 @@ namespace FluxTool_CleanerSystem_K4
                     {
                         if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_WAIT)
                             Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_WAIT;
+                    }
+                }
+                else
+                {
+                    if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_WAIT))
+                    {
+                        if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_RUNNING)
+                            Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_RUNNING;
                     }
                 }
                 ////////////////////////////////////////////////////////////////////////////////////////////////

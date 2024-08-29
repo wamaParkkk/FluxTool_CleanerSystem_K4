@@ -642,8 +642,8 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     // Pin up/down 여부
                     if (bPinFlag)
                     {
-                        // 3초 간격으로 Pin up/down
-                        if (iPinTimeCnt > 2)
+                        // Configure 셋팅 간격으로 Pin up/down
+                        if (iPinTimeCnt > Configure_List.Pin_Time_Interval)
                         {
                             F_PIN_UPDN();
                             iPinTimeCnt = 0;

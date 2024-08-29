@@ -238,6 +238,7 @@ namespace FluxTool_CleanerSystem_K4
         public static int Cylinder_FwdBwd_Timeout = 0;
         public static int Water_Heating_Timeout = 0;
         public static int Water_Fill_Timeout = 0;
+        public static int Pin_Time_Interval = 0;
 
         public static double Water_Heating_Temp = 0.0;
 

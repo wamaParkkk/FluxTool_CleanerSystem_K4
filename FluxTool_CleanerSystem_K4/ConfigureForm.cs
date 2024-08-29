@@ -61,11 +61,13 @@ namespace FluxTool_CleanerSystem_K4
                         Configure_List.Cylinder_FwdBwd_Timeout = int.Parse(spString[1]);                        
                         Configure_List.Water_Heating_Timeout = int.Parse(spString[2]);
                         Configure_List.Water_Fill_Timeout = int.Parse(spString[3]);
+                        Configure_List.Pin_Time_Interval = int.Parse(spString[4]);
 
                         txtBoxDoorOpenCloseTimeout.Text = (Configure_List.Door_OpCl_Timeout).ToString();
                         txtBoxCylinderFwdBwdTimeout.Text = (Configure_List.Cylinder_FwdBwd_Timeout).ToString();                        
                         txtBoxWaterHeatingTimeout.Text = (Configure_List.Water_Heating_Timeout).ToString();
                         txtBoxWaterFillTimeout.Text = (Configure_List.Water_Fill_Timeout).ToString();
+                        txtBoxPinTimeInterval.Text = (Configure_List.Pin_Time_Interval).ToString();
                     }
                 }
             }
@@ -155,13 +157,15 @@ namespace FluxTool_CleanerSystem_K4
             string sCylinderFwdBwdTimeout = txtBoxCylinderFwdBwdTimeout.Text.ToString().Trim();            
             string sWaterHeatingTimeout = txtBoxWaterHeatingTimeout.Text.ToString().Trim();
             string sWaterFillTimeout = txtBoxWaterFillTimeout.Text.ToString().Trim();
+            string sPinTimeInterval = txtBoxPinTimeInterval.Text.ToString().Trim();
 
-            if (Parameter_WriteFile(sDoorOpClTimeout, sCylinderFwdBwdTimeout, sWaterHeatingTimeout, sWaterFillTimeout))
+            if (Parameter_WriteFile(sDoorOpClTimeout, sCylinderFwdBwdTimeout, sWaterHeatingTimeout, sWaterFillTimeout, sPinTimeInterval))
             {
                 Configure_List.Door_OpCl_Timeout = int.Parse(sDoorOpClTimeout);
                 Configure_List.Cylinder_FwdBwd_Timeout = int.Parse(sCylinderFwdBwdTimeout);                
                 Configure_List.Water_Heating_Timeout = int.Parse(sWaterHeatingTimeout);
                 Configure_List.Water_Fill_Timeout = int.Parse(sWaterFillTimeout);
+                Configure_List.Pin_Time_Interval = int.Parse(sPinTimeInterval);
 
                 MessageBox.Show("Configure values has been saved", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -171,13 +175,13 @@ namespace FluxTool_CleanerSystem_K4
             }
         }
 
-        private bool Parameter_WriteFile(string param1, string param2, string param3, string param4)
+        private bool Parameter_WriteFile(string param1, string param2, string param3, string param4, string param5)
         {
             string FileName = "Configure.txt";
 
             try
             {                
-                File.WriteAllText(Global.ConfigurePath + FileName, param1 + "," + param2 + "," + param3 + "," + param4, Encoding.Default);
+                File.WriteAllText(Global.ConfigurePath + FileName, param1 + "," + param2 + "," + param3 + "," + param4 + "," + param5, Encoding.Default);
 
                 return true;
             }
