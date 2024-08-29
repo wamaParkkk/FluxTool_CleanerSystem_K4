@@ -18,17 +18,25 @@ namespace FluxTool_CleanerSystem_K4.Squence
         public double[] ProcessTime;     // Process time
     }
 
+    struct TCheckFlag
+    {
+        public bool AirFlag;        
+        public bool WaterFlag;
+    }
+
     class PM1Process : TBaseThread
     {
         Thread thread;
         private new TStep step;
         TPrcsRecipe prcsRecipe; // Recipe struct
+        TCheckFlag checkFlag;
         Alarm_List alarm_List;  // Alarm list
 
         //double fAlarmTime = 1;
         bool bPinFlag;
         int iPinTimeCnt = 0;
         string sUpDn;
+        private bool bWaitSet;
 
         public PM1Process()
         {
@@ -67,6 +75,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     else if (Define.seqCtrl[module] == Define.CTRL_RETRY)
                     {
                         AlarmAction("Retry");
+                    }
+                    else if (Define.seqCtrl[module] == Define.CTRL_WAIT)
+                    {
+                        AlarmAction("Wait");
                     }
 
                     Process_Progress();
@@ -125,6 +137,14 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 Global.prcsInfo.prcsStepCurrentTime[module] = 1;                
 
                 Global.EventLog("Process has stopped : " + sAction, ModuleName, "Event");                
+            }
+            else if (sAction == "Wait")
+            {
+                F_PROCESS_ALL_VALVE_CLOSE();
+
+                bWaitSet = true;
+
+                Global.EventLog("Process has stopped : " + sAction, ModuleName, "Event");
             }
         }
 
@@ -195,7 +215,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     prcsRecipe.AirKnife[i] = string.Empty;                    
                     prcsRecipe.Pin[i] = string.Empty;
                     prcsRecipe.ProcessTime[i] = 0;
-                }
+                }                
 
                 Global.prcsInfo.prcsRecipeName[module] = string.Empty;
                 Global.prcsInfo.prcsCurrentStep[module] = 0;
@@ -204,6 +224,11 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 Global.prcsInfo.prcsStepCurrentTime[module] = 1;
                 Global.prcsInfo.prcsStepTotalTime[module] = 0;
                 Global.prcsInfo.prcsEndTime[module] = string.Empty;
+
+                checkFlag.AirFlag = false;                
+                checkFlag.WaterFlag = false;
+
+                bWaitSet = false;
 
                 //fAlarmTime = 1;
 
@@ -523,26 +548,28 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 if (prcsRecipe.Water[prcsRecipe.StepNum - 1] == "On")
                 {
                     Global.SetDigValue((int)DigOutputList.CH1_WaterValve_o, (uint)DigitalOffOn.On, ModuleName);
-                    //Global.SetDigValue((int)DigOutputList.CH1_Booster_AirValve_o, (uint)DigitalOffOn.On, ModuleName);
+                    checkFlag.WaterFlag = true;
                 }
                 else
                 {
                     Global.SetDigValue((int)DigOutputList.CH1_WaterValve_o, (uint)DigitalOffOn.Off, ModuleName);
+                    checkFlag.WaterFlag = false;
                 }                
                 
                 // Air knife
                 if (prcsRecipe.AirKnife[prcsRecipe.StepNum - 1] == "On")
                 {
                     Global.SetDigValue((int)DigOutputList.CH1_Air_Knife_o, (uint)DigitalOffOn.On, ModuleName);
+                    checkFlag.AirFlag = true;
                 }
                 else
                 {
                     Global.SetDigValue((int)DigOutputList.CH1_Air_Knife_o, (uint)DigitalOffOn.Off, ModuleName);
+                    checkFlag.AirFlag = false;
                 }
 
                 // Curtain air
-                Global.SetDigValue((int)DigOutputList.CH1_Curtain_AirValve_o, (uint)DigitalOffOn.On, ModuleName);
-
+                Global.SetDigValue((int)DigOutputList.CH1_Curtain_AirValve_o, (uint)DigitalOffOn.On, ModuleName);                
 
                 // Pin up/down 여부
                 bPinFlag = false;
@@ -654,12 +681,19 @@ namespace FluxTool_CleanerSystem_K4.Squence
                         }                        
                     }
 
+                    // Wait 후 Running시 (Door open -> close), IO동작 재 셋팅
+                    if (bWaitSet)
+                        F_WAIT_IO_DESETTING();
+
                     // Water open 후, 5초 후에 Booster air open
                     if (step.Times >= 5)
                     {
                         if (prcsRecipe.Water[prcsRecipe.StepNum - 1] == "On")
                         {
-                            Global.SetDigValue((int)DigOutputList.CH1_Booster_AirValve_o, (uint)DigitalOffOn.On, ModuleName);
+                            if (Global.digSet.curDigSet[(int)DigOutputList.CH1_Booster_AirValve_o] != "On")
+                            {
+                                Global.SetDigValue((int)DigOutputList.CH1_Booster_AirValve_o, (uint)DigitalOffOn.On, ModuleName);
+                            }                            
                         }
                     }
 
@@ -779,8 +813,21 @@ namespace FluxTool_CleanerSystem_K4.Squence
         private void F_PROCESS_RECIPE_DESETTING()
         {
             //
-        }      
-        
+        }
+
+        private void F_WAIT_IO_DESETTING()
+        {
+            bWaitSet = false;
+
+            if (checkFlag.WaterFlag)
+                Global.SetDigValue((int)DigOutputList.CH1_WaterValve_o, (uint)DigitalOffOn.On, ModuleName);
+
+            if (checkFlag.AirFlag)
+                Global.SetDigValue((int)DigOutputList.CH1_Air_Knife_o, (uint)DigitalOffOn.On, ModuleName);
+
+            Global.SetDigValue((int)DigOutputList.CH1_Curtain_AirValve_o, (uint)DigitalOffOn.On, ModuleName);
+        }
+
         private void F_DAILY_COUNT()
         {            
             Define.iPM1DailyCnt++;
