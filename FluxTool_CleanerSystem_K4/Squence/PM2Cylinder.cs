@@ -42,6 +42,10 @@ namespace FluxTool_CleanerSystem_K4.Squence
                     {
                         AlarmAction("Retry");
                     }
+                    else if (Define.seqCylinderCtrl[module] == Define.CTRL_WAIT)
+                    {
+                        AlarmAction("Wait");
+                    }
 
                     Run_Progress();
                     Home_Progress();
@@ -78,6 +82,13 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 Define.seqCylinderSts[module] = Define.STS_ABORTOK;
 
                 step.Times = 1;
+
+                Global.EventLog("Cylinder movement stopped : " + sAction, ModuleName, "Event");
+            }
+            else if (sAction == "Wait")
+            {
+                Global.SetDigValue((int)DigOutputList.CH2_Cylinder_Pwr_o, (uint)DigitalOffOn.Off, ModuleName);
+                Global.SetDigValue((int)DigOutputList.CH2_Cylinder_FwdBwd_o, (uint)DigitalOffOn.Off, ModuleName);
 
                 Global.EventLog("Cylinder movement stopped : " + sAction, ModuleName, "Event");
             }

@@ -714,58 +714,8 @@ namespace FluxTool_CleanerSystem_K4
                 }
                 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-                // 공정 중 Door open시, 시퀀스 Wait                
-                if (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "Off")
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_RUNNING))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_WAIT)
-                            Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_WAIT;
-                    }
-                }
-                else
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_WAIT))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_RUNNING)
-                            Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_RUNNING;
-                    }
-                }
-
-                if (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "Off")
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_RUNNING))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_WAIT)
-                            Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_WAIT;
-                    }
-                }
-                else
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_WAIT))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_RUNNING)
-                            Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_RUNNING;
-                    }
-                }
-
-                if (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_RUNNING))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_WAIT)
-                            Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_WAIT;
-                    }
-                }
-                else
-                {
-                    if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_WAIT))
-                    {
-                        if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_RUNNING)
-                            Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_RUNNING;
-                    }
-                }
-                ////////////////////////////////////////////////////////////////////////////////////////////////
+                // 공정 중 Door open시, 시퀀스 Wait / 모터 Stop
+                _F_DOOR_OPEN_SEQ();                                
             }
 
 
@@ -791,6 +741,171 @@ namespace FluxTool_CleanerSystem_K4
                     }
                 }                
             }            
+        }
+
+        private static void _F_DOOR_OPEN_SEQ()
+        {
+            // CH1
+            if (GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "Off")
+            {
+                if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_RUNNING))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_WAIT)
+                        Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_WAIT;
+                }
+
+                // 모터는 매뉴얼 동작이라도 멈추게
+                if (Define.seqCylinderCtrl[(byte)MODULE._PM1] != Define.CTRL_WAIT)
+                    Define.seqCylinderCtrl[(byte)MODULE._PM1] = Define.CTRL_WAIT;
+            }
+            else
+            {
+                if ((Define.seqMode[(byte)MODULE._PM1] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_WAIT))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_RUNNING)
+                        Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_RUNNING;
+                }
+
+                if (Define.seqCtrl[(byte)MODULE._PM1] == Define.CTRL_WAIT)
+                {                    
+                    if ((Define.seqCylinderMode[(byte)MODULE._PM1] == Define.MODE_CYLINDER_RUN) &&
+                        (Define.seqCylinderSts[(byte)MODULE._PM1] == Define.STS_CYLINDER_RUNING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM1] = Define.MODE_CYLINDER_RUN;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM1] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM1] == Define.MODE_CYLINDER_HOME) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM1] == Define.STS_CYLINDER_HOMEING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM1] = Define.MODE_CYLINDER_HOME;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM1] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM1] == Define.MODE_CYLINDER_FWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM1] == Define.STS_CYLINDER_FWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM1] = Define.MODE_CYLINDER_FWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM1] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM1] == Define.MODE_CYLINDER_BWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM1] == Define.STS_CYLINDER_BWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM1] = Define.MODE_CYLINDER_BWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM1] = Define.STS_CYLINDER_IDLE;
+                    }
+                }                
+            }
+
+            // CH2
+            if (GetDigValue((int)DigInputList.CH2_Door_Sensor_i) == "Off")
+            {
+                if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_RUNNING))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_WAIT)
+                        Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_WAIT;
+                }
+
+                // 모터는 매뉴얼 동작이라도 멈추게
+                if (Define.seqCylinderCtrl[(byte)MODULE._PM2] != Define.CTRL_WAIT)
+                    Define.seqCylinderCtrl[(byte)MODULE._PM2] = Define.CTRL_WAIT;
+            }
+            else
+            {
+                if ((Define.seqMode[(byte)MODULE._PM2] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_WAIT))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_RUNNING)
+                        Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_RUNNING;
+                }
+
+                if (Define.seqCtrl[(byte)MODULE._PM2] == Define.CTRL_WAIT)
+                {
+                    if ((Define.seqCylinderMode[(byte)MODULE._PM2] == Define.MODE_CYLINDER_RUN) &&
+                        (Define.seqCylinderSts[(byte)MODULE._PM2] == Define.STS_CYLINDER_RUNING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM2] = Define.MODE_CYLINDER_RUN;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM2] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM2] == Define.MODE_CYLINDER_HOME) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM2] == Define.STS_CYLINDER_HOMEING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM2] = Define.MODE_CYLINDER_HOME;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM2] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM2] == Define.MODE_CYLINDER_FWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM2] == Define.STS_CYLINDER_FWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM2] = Define.MODE_CYLINDER_FWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM2] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM2] == Define.MODE_CYLINDER_BWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM2] == Define.STS_CYLINDER_BWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM2] = Define.MODE_CYLINDER_BWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM2] = Define.STS_CYLINDER_IDLE;
+                    }
+                }
+            }
+
+            // CH3
+            if (GetDigValue((int)DigInputList.CH3_Door_Sensor_i) == "Off")
+            {
+                if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_RUNNING))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_WAIT)
+                        Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_WAIT;
+                }
+
+                // 모터는 매뉴얼 동작이라도 멈추게
+                if (Define.seqCylinderCtrl[(byte)MODULE._PM3] != Define.CTRL_WAIT)
+                    Define.seqCylinderCtrl[(byte)MODULE._PM3] = Define.CTRL_WAIT;
+            }
+            else
+            {
+                if ((Define.seqMode[(byte)MODULE._PM3] == Define.MODE_PROCESS) && (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_WAIT))
+                {
+                    if (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_RUNNING)
+                        Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_RUNNING;
+                }
+
+                if (Define.seqCtrl[(byte)MODULE._PM3] == Define.CTRL_WAIT)
+                {
+                    if ((Define.seqCylinderMode[(byte)MODULE._PM3] == Define.MODE_CYLINDER_RUN) &&
+                        (Define.seqCylinderSts[(byte)MODULE._PM3] == Define.STS_CYLINDER_RUNING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM3] = Define.MODE_CYLINDER_RUN;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM3] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM3] == Define.MODE_CYLINDER_HOME) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM3] == Define.STS_CYLINDER_HOMEING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM3] = Define.MODE_CYLINDER_HOME;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM3] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM3] == Define.MODE_CYLINDER_FWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM3] == Define.STS_CYLINDER_FWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM3] = Define.MODE_CYLINDER_FWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM3] = Define.STS_CYLINDER_IDLE;
+                    }
+                    else if ((Define.seqCylinderMode[(byte)MODULE._PM3] == Define.MODE_CYLINDER_BWD) &&
+                             (Define.seqCylinderSts[(byte)MODULE._PM3] == Define.STS_CYLINDER_BWDING))
+                    {
+                        Define.seqCylinderMode[(byte)MODULE._PM3] = Define.MODE_CYLINDER_BWD;
+                        Define.seqCylinderCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
+                        Define.seqCylinderSts[(byte)MODULE._PM3] = Define.STS_CYLINDER_IDLE;
+                    }
+                }
+            }
         }
         #endregion
 

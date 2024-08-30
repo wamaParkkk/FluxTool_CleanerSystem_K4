@@ -142,7 +142,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
             {
                 F_PROCESS_ALL_VALVE_CLOSE();
 
-                bWaitSet = true;
+                bWaitSet = true;                
 
                 Global.EventLog("Process has stopped : " + sAction, ModuleName, "Event");
             }
