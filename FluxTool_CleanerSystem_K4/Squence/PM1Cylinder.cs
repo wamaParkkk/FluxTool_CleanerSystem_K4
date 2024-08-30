@@ -10,6 +10,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
         Thread thread;
         private new TStep step;
         Alarm_List alarm_List;  // Alarm list
+        private bool bWaitSet;
 
         public PM1Cylinder()
         {
@@ -86,11 +87,16 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 Global.EventLog("Cylinder movement stopped : " + sAction, ModuleName, "Event");
             }
             else if (sAction == "Wait")
-            {                
-                Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.Off, ModuleName);
-                Global.SetDigValue((int)DigOutputList.CH1_Cylinder_FwdBwd_o, (uint)DigitalOffOn.Off, ModuleName);                
+            {
+                if (!bWaitSet)
+                {
+                    bWaitSet = true;
 
-                Global.EventLog("Cylinder movement stopped : " + sAction, ModuleName, "Event");
+                    Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.Off, ModuleName);
+                    Global.SetDigValue((int)DigOutputList.CH1_Cylinder_FwdBwd_o, (uint)DigitalOffOn.Off, ModuleName);
+
+                    Global.EventLog("Cylinder movement stopped : " + sAction, ModuleName, "Event");
+                }                
             }
         }
 

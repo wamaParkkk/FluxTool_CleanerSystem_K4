@@ -140,11 +140,14 @@ namespace FluxTool_CleanerSystem_K4.Squence
             }
             else if (sAction == "Wait")
             {
-                F_PROCESS_ALL_VALVE_CLOSE();
+                if (!bWaitSet)
+                {
+                    F_PROCESS_ALL_VALVE_CLOSE();
 
-                bWaitSet = true;                
+                    bWaitSet = true;
 
-                Global.EventLog("Process has stopped : " + sAction, ModuleName, "Event");
+                    Global.EventLog("Process has stopped : " + sAction, ModuleName, "Event");
+                }                
             }
         }
 
