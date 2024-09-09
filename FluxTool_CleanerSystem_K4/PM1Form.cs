@@ -579,12 +579,14 @@ namespace FluxTool_CleanerSystem_K4
 
         private async void Digital_Click(object sender, EventArgs e)
         {
+            /*
             if ((Define.seqCtrl[module] != Define.CTRL_IDLE) ||
                 (Define.seqCylinderCtrl[module] != Define.CTRL_IDLE))
             {
                 MessageBox.Show("process is in progress", "Notification");
                 return;
             }
+            */
 
             if (Define.bChamberDisable[module])
             {
@@ -654,6 +656,12 @@ namespace FluxTool_CleanerSystem_K4
                         digitalDlg.Init2("Home", "Backward", "Forward", "CH1 Cylinder Fwd/Bwd");
                         if (digitalDlg.ShowDialog() == DialogResult.OK)
                         {
+                            if (Global.GetDigValue((int)DigInputList.CH1_Door_Sensor_i) == "Off")
+                            {
+                                MessageBox.Show("Chamber door is opened", "Notification");
+                                return;
+                            }
+
                             if (digitalDlg.m_strResult == "Home")
                             {
                                 //Global.SetDigValue((int)DigOutputList.CH1_Cylinder_Pwr_o, (uint)DigitalOffOn.Off, ModuleName);

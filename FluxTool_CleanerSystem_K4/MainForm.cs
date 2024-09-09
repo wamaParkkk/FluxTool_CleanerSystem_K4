@@ -49,6 +49,7 @@ namespace FluxTool_CleanerSystem_K4
         private Label[] m_CylinderStepBox;
 
         bool bLogCnt;
+        private int iProcessEndBuzzerTime;
 
         public MainForm()
         {           
@@ -70,6 +71,8 @@ namespace FluxTool_CleanerSystem_K4
             Define.bOpActivate = false;
 
             bLogCnt = false;
+
+            iProcessEndBuzzerTime = 0;
 
             MyNativeWindows myNativeWindows = new MyNativeWindows();
 
@@ -729,17 +732,33 @@ namespace FluxTool_CleanerSystem_K4
                 }
             }
 
-            /* 2024.02.19 hspark 주석처리
+            // 2024.09.09 요청 사항 추가
             // Process end - buzzer auto off
-            if (Global.GetDigValue((int)DigInputList.Front_Door_Sensor_i) == "Off")
-            {
-                if (Global.digSet.curDigSet[(int)DigOutputList.Buzzer_o] != null)
+            if ((Define.bProcessEnd[(byte)MODULE._PM1]) || (Define.bProcessEnd[(byte)MODULE._PM2]) || (Define.bProcessEnd[(byte)MODULE._PM3]))
+            {                
+                if (iProcessEndBuzzerTime >= Configure_List.End_Buzzer_Time)
                 {
-                    if (Global.digSet.curDigSet[(int)DigOutputList.Buzzer_o] != "Off")
-                        Global.SetDigValue((int)DigOutputList.Buzzer_o, (uint)DigitalOffOn.Off, "PM1");
+                    if ((Define.seqCtrl[(byte)MODULE._PM1] != Define.CTRL_ALARM) &&
+                        (Define.seqCtrl[(byte)MODULE._PM2] != Define.CTRL_ALARM) &&
+                        (Define.seqCtrl[(byte)MODULE._PM3] != Define.CTRL_ALARM))
+                    {
+                        if (Global.digSet.curDigSet[(int)DigOutputList.Buzzer_o] != null)
+                        {
+                            if (Global.digSet.curDigSet[(int)DigOutputList.Buzzer_o] != "Off")
+                                Global.SetDigValue((int)DigOutputList.Buzzer_o, (uint)DigitalOffOn.Off, "PM1");
+                        }
+                    }                    
                 }
+                else
+                {
+                    iProcessEndBuzzerTime++;
+                }                
             }
-            */
+            else
+            {
+                iProcessEndBuzzerTime = 0;
+            }
+            
 
             // Daily count init
             string sTime = DateTime.Now.ToString("HH:mm:ss");

@@ -27,7 +27,7 @@ namespace FluxTool_CleanerSystem_K4
                 pnl_DI00, pnl_DI01, pnl_DI02, pnl_DI03, pnl_DI04, pnl_DI05, pnl_DI06, pnl_DI07,
                 pnl_DI08, pnl_DI09, pnl_DI10, pnl_DI11, pnl_DI12, pnl_DI13, pnl_DI14, pnl_DI15,
                 pnl_DI16, pnl_DI17, pnl_DI18, pnl_DI19, pnl_DI20, pnl_DI21, pnl_DI22, pnl_DI23,
-                pnl_DI24, pnl_DI25, pnl_DI26, pnl_DI27, pnl_DI28, pnl_DI29, pnl_DI30, pnl_DI19 };
+                pnl_DI24, pnl_DI25, pnl_DI26, pnl_DI27, pnl_DI28, pnl_DI29, pnl_DI30, pnl_DI31 };
 
             m_doBox = new CheckBox[Define.CH_MAX]
             {

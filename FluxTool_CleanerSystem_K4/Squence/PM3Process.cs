@@ -233,6 +233,8 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
                 bWaitSet = false;
 
+                Define.bProcessEnd[module] = false;
+
                 //fAlarmTime = 1;
 
                 bPinFlag = false;
@@ -768,6 +770,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
 
             // Process end buzzer
             Global.SetDigValue((int)DigOutputList.Buzzer_o, (uint)DigitalOffOn.On, ModuleName);
+            Define.bProcessEnd[module] = true;
 
             Global.EventLog("PROCESS COMPLETED.", ModuleName, "Event");
 

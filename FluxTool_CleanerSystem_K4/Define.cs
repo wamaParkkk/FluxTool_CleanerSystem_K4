@@ -238,6 +238,7 @@ namespace FluxTool_CleanerSystem_K4
         public static int Water_Heating_Timeout = 0;
         public static int Water_Fill_Timeout = 0;
         public static int Pin_Time_Interval = 0;
+        public static int End_Buzzer_Time = 0;
 
         public static double Water_Heating_Temp = 0.0;
 
@@ -358,7 +359,10 @@ namespace FluxTool_CleanerSystem_K4
         public const int iSemiAutoTime = 86400; // 24h * 60m * 60s
 
         // Chamber Enable/Disable
-        public static bool[] bChamberDisable = { false, false, false };        
+        public static bool[] bChamberDisable = { false, false, false };
+
+        // Process end flag
+        public static bool[] bProcessEnd = { false, false, false };
 
         // HanyoungNX Heater 변수      
         public static double temp_PV;
