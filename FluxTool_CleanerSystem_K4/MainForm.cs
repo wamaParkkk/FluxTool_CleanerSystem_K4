@@ -26,6 +26,7 @@ namespace FluxTool_CleanerSystem_K4
         AlarmForm m_alarmForm;
         EventLogForm m_eventLogForm;
         UserRegistForm m_userRegistForm;
+        ToolHistoryForm m_toolHistoryForm;
         
         Squence.PM1Process pM1Process;
         Squence.PM1Cylinder pM1Cylinder;
@@ -102,7 +103,7 @@ namespace FluxTool_CleanerSystem_K4
 
             SubFormShow((byte)Page.LogInPage);
 
-            F_ButtonVisible(false, false, false, false, false, false, false, false);            
+            F_ButtonVisible(false, false, false, false, false, false, false, false, false);            
         }
 
         public class MyNativeWindows : NativeWindow
@@ -175,7 +176,11 @@ namespace FluxTool_CleanerSystem_K4
 
             m_eventLogForm = new EventLogForm();
             m_eventLogForm.MdiParent = this;
-            m_eventLogForm.Show();            
+            m_eventLogForm.Show();
+
+            m_toolHistoryForm = new ToolHistoryForm();
+            m_toolHistoryForm.MdiParent = this;
+            m_toolHistoryForm.Show();
         }
 
         private void CreateThread()
@@ -301,6 +306,15 @@ namespace FluxTool_CleanerSystem_K4
                             F_ModuleButtonVisible(false, false, false, false);
                         }
                         break;
+
+                    case (byte)Page.ToolHistory:
+                        {
+                            m_toolHistoryForm.Activate();
+                            m_toolHistoryForm.BringToFront();
+
+                            F_ModuleButtonVisible(false, false, false, false);
+                        }
+                        break;
                 }
             }
             catch (Exception ex)
@@ -309,7 +323,7 @@ namespace FluxTool_CleanerSystem_K4
             }
         }
 
-        private void F_ButtonVisible(bool bOpBtn, bool bMaintBtn, bool bRecipeBtn, bool bConfigureBtn, bool bIOBtn, bool bAlarmBtn, bool bEventLogBtn, bool bUserRegistBtn)
+        private void F_ButtonVisible(bool bOpBtn, bool bMaintBtn, bool bRecipeBtn, bool bConfigureBtn, bool bIOBtn, bool bAlarmBtn, bool bEventLogBtn, bool bUserRegistBtn, bool bToolHistoryBtn)
         {
             pictureBoxOperation.Enabled = bOpBtn;
             btnOperation.Enabled = bOpBtn;
@@ -335,6 +349,9 @@ namespace FluxTool_CleanerSystem_K4
 
             pictureBoxUserRegist.Enabled = bUserRegistBtn;
             btnUserRegist.Enabled = bUserRegistBtn;
+
+            pictureBoxToolHistory.Enabled = bToolHistoryBtn;
+            btnToolHistory.Enabled = bToolHistoryBtn;
         }
 
         private void F_ModuleButtonVisible(bool bLMBtn, bool bCMBtn, bool bRMBtn, bool bWTBtn)
@@ -388,6 +405,11 @@ namespace FluxTool_CleanerSystem_K4
         private void btnUserRegist_Click(object sender, EventArgs e)
         {
             SubFormShow((byte)Page.UserRegist);
+        }
+
+        private void btnToolHistory_Click(object sender, EventArgs e)
+        {
+            SubFormShow((byte)Page.ToolHistory);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -587,20 +609,24 @@ namespace FluxTool_CleanerSystem_K4
             {
                 labelPageName.Text = "Log-In";
             }
+            else if (Define.currentPage == (byte)Page.ToolHistory)
+            {
+                labelPageName.Text = "Tool History";
+            }
 
             // User level에 따른 버튼 활성화
             if (Define.UserLevel == "Master")
             {
                 // op, maint, recipe, configure, io, alarm, userRegist
-                F_ButtonVisible(true, true, true, true, true, true, true, true);
+                F_ButtonVisible(true, true, true, true, true, true, true, true, true);
             }
             else if (Define.UserLevel == "Maintnance")
             {
-                F_ButtonVisible(true, true, true, true, true, true, true, false);
+                F_ButtonVisible(true, true, true, true, true, true, true, false, true);
             }
             else if (Define.UserLevel == "User")
             {
-                F_ButtonVisible(true, false, false, true, false, true, true, false);
+                F_ButtonVisible(true, false, false, true, false, true, true, false, true);
             }
 
 
@@ -831,6 +857,6 @@ namespace FluxTool_CleanerSystem_K4
         {
             WritePrivateProfileString("TodayRuntime", "Time", "0", string.Format("{0}{1}", Global.dailyCntfilePath, "TodayRuntime.ini"));
             Define.dTodayRunTime = 0;
-        }                 
+        }
     }
 }

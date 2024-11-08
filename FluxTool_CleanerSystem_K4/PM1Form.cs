@@ -19,6 +19,7 @@ namespace FluxTool_CleanerSystem_K4
 
         RecipeSelectForm recipeSelectForm;
         ToolCheckInfoForm toolCheckInfoForm;
+        ToolInfoRegistForm toolInfoRegistForm;
         DigitalDlg digitalDlg;
 
         private Timer logdisplayTimer = new Timer();
@@ -836,15 +837,20 @@ namespace FluxTool_CleanerSystem_K4
 
                         if (MessageBox.Show("Do you want to proceed with the process?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Define.iSelectRecipeModule = module;
-
-                            recipeSelectForm = new RecipeSelectForm();
-
-                            if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                            toolInfoRegistForm = new ToolInfoRegistForm();
+                            toolInfoRegistForm.Init(module);
+                            if (toolInfoRegistForm.ShowDialog() == DialogResult.OK)
                             {
-                                Define.seqMode[module] = Define.MODE_PROCESS;
-                                Define.seqCtrl[module] = Define.CTRL_RUN;
-                                Define.seqSts[module] = Define.STS_IDLE;
+                                Define.iSelectRecipeModule = module;
+
+                                recipeSelectForm = new RecipeSelectForm();
+
+                                if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                                {
+                                    Define.seqMode[module] = Define.MODE_PROCESS;
+                                    Define.seqCtrl[module] = Define.CTRL_RUN;
+                                    Define.seqSts[module] = Define.STS_IDLE;
+                                }
                             }
                         }
                     }

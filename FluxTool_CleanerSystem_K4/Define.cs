@@ -20,7 +20,8 @@ namespace FluxTool_CleanerSystem_K4
         IOPage = 5,
         AlarmPage = 6,
         EventLogPage = 7,
-        UserRegist = 8
+        UserRegist = 8,
+        ToolHistory = 9
     }
 
     public enum DigitalOffOn
@@ -366,6 +367,12 @@ namespace FluxTool_CleanerSystem_K4
 
         // HanyoungNX Heater 변수      
         public static double temp_PV;
-        public static double temp_SV;        
+        public static double temp_SV;
+
+        // Tool 이력 관리 정보        
+        public static string[] ToolInfoRegist_User = { string.Empty, string.Empty, string.Empty };
+        public static string[] ToolInfoRegist_Lot = { string.Empty, string.Empty, string.Empty };
+        public static string[] ToolInfoRegist_MC = { string.Empty, string.Empty, string.Empty };
+        public static string[] ToolInfoRegist_ToolID = { string.Empty, string.Empty, string.Empty };        
     }    
 }

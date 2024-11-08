@@ -207,6 +207,18 @@
     <Compile Include="ToolCheckInfoForm.Designer.cs">
       <DependentUpon>ToolCheckInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToolHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolHistoryForm.Designer.cs">
+      <DependentUpon>ToolHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolInfoRegistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolInfoRegistForm.Designer.cs">
+      <DependentUpon>ToolInfoRegistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserDataDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -284,6 +296,12 @@
     <EmbeddedResource Include="ToolCheckInfoForm.resx">
       <DependentUpon>ToolCheckInfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ToolHistoryForm.resx">
+      <DependentUpon>ToolHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolInfoRegistForm.resx">
+      <DependentUpon>ToolInfoRegistForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserRegistForm.resx">
       <DependentUpon>UserRegistForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,6 +343,7 @@
     <None Include="images\log.png" />
     <None Include="images\WaterFill.png" />
     <None Include="images\Disable.png" />
+    <None Include="images\History.png" />
     <Content Include="UserData.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

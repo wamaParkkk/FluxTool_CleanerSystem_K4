@@ -50,6 +50,7 @@ namespace FluxTool_CleanerSystem_K4
         public static string ConfigurePath = Path.GetFullPath(Path.Combine(System.AppContext.BaseDirectory, @"..\..\Configure\"));
         public static string serialPortInfoPath = Path.GetFullPath(Path.Combine(System.AppContext.BaseDirectory, @"..\..\"));
         public static string dailyCntfilePath = Path.GetFullPath(Path.Combine(System.AppContext.BaseDirectory, @"..\..\DailyCount\"));
+        public static string toolHistoryfilePath = Path.GetFullPath(Path.Combine(System.AppContext.BaseDirectory, @"..\..\ToolHistory\"));
 
         public static string hostEquipmentInfo = "K5EE_FluxtoolCleaningSystem";
         public static string hostEquipmentInfo_Log = "K5EE_FluxtoolCleaningSystemLog";

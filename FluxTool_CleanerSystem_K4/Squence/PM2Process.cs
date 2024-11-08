@@ -38,6 +38,8 @@ namespace FluxTool_CleanerSystem_K4.Squence
         string sUpDn;
         private bool bWaitSet;
 
+        private string prcsStartTime;
+
         public PM2Process()
         {
             ModuleName = "PM2";
@@ -227,6 +229,7 @@ namespace FluxTool_CleanerSystem_K4.Squence
                 Global.prcsInfo.prcsStepCurrentTime[module] = 1;
                 Global.prcsInfo.prcsStepTotalTime[module] = 0;
                 Global.prcsInfo.prcsEndTime[module] = string.Empty;
+                prcsStartTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
                 checkFlag.AirFlag = false;                
                 checkFlag.WaterFlag = false;
@@ -776,6 +779,8 @@ namespace FluxTool_CleanerSystem_K4.Squence
             Global.EventLog("PROCESS COMPLETED.", ModuleName, "Event");
 
             F_DAILY_COUNT();
+
+            F_TOOL_HISTORY();
         }
 
         private void F_PIN_UPDN()
@@ -839,6 +844,46 @@ namespace FluxTool_CleanerSystem_K4.Squence
         {
             Define.iPM2DailyCnt++;
             Global.DailyLog(Define.iPM2DailyCnt, ModuleName);            
+        }
+
+        private void F_TOOL_HISTORY()
+        {
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+            string user = Define.ToolInfoRegist_User[module];
+            string lotInfo = Define.ToolInfoRegist_Lot[module];
+            string mcInfo = Define.ToolInfoRegist_MC[module];
+            string toolID = Define.ToolInfoRegist_ToolID[module];
+            string ch = ModuleName;
+            string startTime = prcsStartTime;
+            string endTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+            // CSV 형식으로 문자열 만듬
+            string[] data = { todayDate, user, lotInfo, mcInfo, toolID, ch, startTime, endTime };
+            /*for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = $"\"{data[i]}\"";
+            }*/
+            string csvLine = string.Join(",", data);
+
+            // 파일에 데이터 저장            
+            string fileName = string.Format("{0}{1}_{2}.csv", Global.toolHistoryfilePath, toolID, endTime);
+            try
+            {
+                // 파일이 존재하지 않으면 헤더 추가
+                if (!File.Exists(fileName))
+                {
+                    string header = "날짜,사용자,Lot정보,M/C정보,ToolID정보,챔버,공정시작시간,공정종료시간";
+                    File.WriteAllText(fileName, header + Environment.NewLine);
+                }
+                // 파일에 데이터 추가
+                File.AppendAllText(fileName, csvLine + Environment.NewLine);
+
+                Global.EventLog("Tool 이력 데이터가 저장되었습니다.", ModuleName, "Event");
+            }
+            catch (Exception ex)
+            {
+                Global.EventLog($"Tool 이력 데이터 파일 저장 중 오류가 발생했습니다 : {ex.Message}", ModuleName, "Event");
+            }
         }
         #endregion
 

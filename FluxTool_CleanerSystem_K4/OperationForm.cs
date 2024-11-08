@@ -13,6 +13,7 @@ namespace FluxTool_CleanerSystem_K4
     {
         RecipeSelectForm recipeSelectForm;
         ToolCheckInfoForm toolCheckInfoForm;
+        ToolInfoRegistForm toolInfoRegistForm;
 
         private Timer logdisplayTimer = new Timer();
 
@@ -1172,17 +1173,22 @@ namespace FluxTool_CleanerSystem_K4
                         }
 
                         if (MessageBox.Show("Do you want to proceed with the process?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        {
-                            Define.iSelectRecipeModule = (int)MODULE._PM1;
-
-                            recipeSelectForm = new RecipeSelectForm();
-
-                            if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                        {                            
+                            toolInfoRegistForm = new ToolInfoRegistForm();
+                            toolInfoRegistForm.Init((int)MODULE._PM1);
+                            if (toolInfoRegistForm.ShowDialog() == DialogResult.OK)
                             {
-                                Define.seqMode[(byte)MODULE._PM1] = Define.MODE_PROCESS;
-                                Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
-                                Define.seqSts[(byte)MODULE._PM1] = Define.STS_IDLE;
-                            }
+                                Define.iSelectRecipeModule = (int)MODULE._PM1;
+
+                                recipeSelectForm = new RecipeSelectForm();
+
+                                if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                                {
+                                    Define.seqMode[(byte)MODULE._PM1] = Define.MODE_PROCESS;
+                                    Define.seqCtrl[(byte)MODULE._PM1] = Define.CTRL_RUN;
+                                    Define.seqSts[(byte)MODULE._PM1] = Define.STS_IDLE;
+                                }
+                            }                            
                         }
                     }
                     break;
@@ -1269,15 +1275,20 @@ namespace FluxTool_CleanerSystem_K4
 
                         if (MessageBox.Show("Do you want to proceed with the process?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Define.iSelectRecipeModule = (int)MODULE._PM2;
-
-                            recipeSelectForm = new RecipeSelectForm();
-
-                            if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                            toolInfoRegistForm = new ToolInfoRegistForm();
+                            toolInfoRegistForm.Init((int)MODULE._PM2);
+                            if (toolInfoRegistForm.ShowDialog() == DialogResult.OK)
                             {
-                                Define.seqMode[(byte)MODULE._PM2] = Define.MODE_PROCESS;
-                                Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
-                                Define.seqSts[(byte)MODULE._PM2] = Define.STS_IDLE;
+                                Define.iSelectRecipeModule = (int)MODULE._PM2;
+
+                                recipeSelectForm = new RecipeSelectForm();
+
+                                if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                                {
+                                    Define.seqMode[(byte)MODULE._PM2] = Define.MODE_PROCESS;
+                                    Define.seqCtrl[(byte)MODULE._PM2] = Define.CTRL_RUN;
+                                    Define.seqSts[(byte)MODULE._PM2] = Define.STS_IDLE;
+                                }
                             }
                         }
                     }
@@ -1365,15 +1376,20 @@ namespace FluxTool_CleanerSystem_K4
 
                         if (MessageBox.Show("Do you want to proceed with the process?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            Define.iSelectRecipeModule = (int)MODULE._PM3;
-
-                            recipeSelectForm = new RecipeSelectForm();
-
-                            if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                            toolInfoRegistForm = new ToolInfoRegistForm();
+                            toolInfoRegistForm.Init((int)MODULE._PM3);
+                            if (toolInfoRegistForm.ShowDialog() == DialogResult.OK)
                             {
-                                Define.seqMode[(byte)MODULE._PM3] = Define.MODE_PROCESS;
-                                Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
-                                Define.seqSts[(byte)MODULE._PM3] = Define.STS_IDLE;
+                                Define.iSelectRecipeModule = (int)MODULE._PM3;
+
+                                recipeSelectForm = new RecipeSelectForm();
+
+                                if (recipeSelectForm.ShowDialog() == DialogResult.OK)
+                                {
+                                    Define.seqMode[(byte)MODULE._PM3] = Define.MODE_PROCESS;
+                                    Define.seqCtrl[(byte)MODULE._PM3] = Define.CTRL_RUN;
+                                    Define.seqSts[(byte)MODULE._PM3] = Define.STS_IDLE;
+                                }
                             }
                         }
                     }
