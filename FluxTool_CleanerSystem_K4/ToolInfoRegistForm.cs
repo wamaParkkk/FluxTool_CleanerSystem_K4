@@ -78,7 +78,8 @@ namespace FluxTool_CleanerSystem_K4
                 }
 
                 sInputText = textBox_ToolID.Text.ToString();
-                if (sInputText.Length >= 5 && sInputText.Contains("-"))
+                if ( (sInputText.Length >= 5 && sInputText.Contains("-")) ||
+                     (sInputText.Length >= 5 && sInputText.Contains(";")) )
                 {
                     Define.ToolInfoRegist_ToolID[iCH] = textBox_ToolID.Text.ToString();
                 }
