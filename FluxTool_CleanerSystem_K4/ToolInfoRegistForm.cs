@@ -45,7 +45,7 @@ namespace FluxTool_CleanerSystem_K4
             else
             {
                 string sInputText = textBox_User.Text.ToString();
-                if (sInputText.Length >= 4 && sInputText.Length <= 5)
+                if (sInputText.Length >= 5 && sInputText.Length <= 6)
                 {
                     Define.ToolInfoRegist_User[iCH] = textBox_User.Text.ToString();
                 }                    
