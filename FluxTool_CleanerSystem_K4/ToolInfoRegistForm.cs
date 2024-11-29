@@ -43,12 +43,51 @@ namespace FluxTool_CleanerSystem_K4
                 MessageBox.Show($"Tool 정보를 입력해 주세요", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-            {                
-                Define.ToolInfoRegist_User[iCH] = textBox_User.Text.ToString();
-                Define.ToolInfoRegist_Lot[iCH] = textBox_LotNo.Text.ToString();
-                Define.ToolInfoRegist_MC[iCH] = textBox_MC.Text.ToString();
-                Define.ToolInfoRegist_ToolID[iCH] = textBox_ToolID.Text.ToString();
+            {
+                string sInputText = textBox_User.Text.ToString();
+                if (sInputText.Length >= 4 && sInputText.Length <= 5)
+                {
+                    Define.ToolInfoRegist_User[iCH] = textBox_User.Text.ToString();
+                }                    
+                else
+                {
+                    MessageBox.Show($"User 정보가 잘못 입력되었습니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
+                sInputText = textBox_LotNo.Text.ToString();
+                if (sInputText.EndsWith(";"))
+                {
+                    Define.ToolInfoRegist_Lot[iCH] = textBox_LotNo.Text.ToString();
+                }
+                else
+                {
+                    MessageBox.Show($"Lot# 정보가 잘못 입력되었습니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                sInputText = textBox_MC.Text.ToString();
+                if (sInputText.Length >= 2 && sInputText.Contains("-"))
+                {
+                    Define.ToolInfoRegist_MC[iCH] = textBox_MC.Text.ToString();
+                }
+                else
+                {
+                    MessageBox.Show($"M/C# 정보가 잘못 입력되었습니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                sInputText = textBox_ToolID.Text.ToString();
+                if (sInputText.Length >= 5 && sInputText.Contains("-"))
+                {
+                    Define.ToolInfoRegist_ToolID[iCH] = textBox_ToolID.Text.ToString();
+                }
+                else
+                {
+                    MessageBox.Show($"Tool ID 정보가 잘못 입력되었습니다", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                
                 DialogResult = DialogResult.OK;
 
                 Close();
